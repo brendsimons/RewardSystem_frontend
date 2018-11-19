@@ -1,4 +1,49 @@
-<mat-sidenav-container class="example-container">
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Reward System</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <a href="#!">Reward System</a>
+        <ul>
+          <li>
+            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" (click)="snav.toggle()">Dashboard</a>
+          </li>
+          <li>
+            <a class="nav-link" routerLink="/shop" routerLinkActive="active" (click)="snav.toggle()">Shop</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#!" (click)="snav.toggle()">Klassement</a>
+          </li>
+          <li>
+            <a class="nav-link" routerLink="/opdrachtenIngeven" routerLinkActive="active" (click)="snav.toggle()">Opdrachten ingeven</a>
+          </li>
+          <li>
+            <a class="nav-link" routerLink="/rewardsIngeven" routerLinkActive="active" (click)="snav.toggle()">Rewards ingeven</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a class="nav-link" (click)="snav.toggle()">Login</a>
+          </li>
+          <li>
+            <a class="nav-link" (click)="snav.toggle()">Logout</a>
+          </li>
+        </ul>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+<!--<mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" opened>
   <a href="#!">Reward System</a>
     <ul>
@@ -27,7 +72,4 @@
       </li>
     </ul>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container>-->
