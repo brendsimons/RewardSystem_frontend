@@ -16,3 +16,9 @@ $theme-colors: (
 .mat-nav-list {
   flex: 2 !important;
 }
+
+
+.flex-me {
+  display: inline-flex;
+  flex-flow: row wrap;
+}
