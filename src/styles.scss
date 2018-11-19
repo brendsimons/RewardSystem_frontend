@@ -1,6 +1,6 @@
 // Overschrijf BS variabelen en mixins
 $theme-colors: (
-        'primary': #009CAB,
+        'primary': black,
         'danger': #F04C25,
         'salmon' : salmon
 );
@@ -8,5 +8,11 @@ $theme-colors: (
 // Link naar BS en FA
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-// Eigen code/partials
+.navbar-dark {
+  background-color: $primary !important;
+}
+.mat-nav-list {
+  flex: 2 !important;
+}
