@@ -11,7 +11,7 @@ import {RewardsComponent} from './rewards/rewards.component';
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
-  { path: 'opdrachtenIngeven', component: OpdrachtenIngevenComponent },
+  { path: 'opdrachtenIngeven', component: OpdrachtenIngevenComponent, canActivate: [AuthGuard] },
     { path: 'rewards', component: RewardsComponent },
   { path: 'rewardsIngeven', component: RewardsIngevenComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
