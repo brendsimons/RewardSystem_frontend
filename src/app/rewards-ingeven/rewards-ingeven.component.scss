@@ -1,8 +1,11 @@
-.example-container {
-  display: flex;
-  flex-direction: column;
+.my-card{
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+
+  margin: 5rem auto;
 }
 
-.example-container > * {
+.full-width {
   width: 100%;
 }
