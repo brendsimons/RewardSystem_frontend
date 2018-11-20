@@ -1,5 +1,16 @@
 mat-card {
-    height: 200px;
-    width: 200px;
+    width: 300px;
     margin:25px;
   }
+.button{
+    background-color: #EE6C4D;
+    color: #293241;
+    float:right;
+    border:#EE6C4D;
+    border-radius: 4px;
+}
+
+.button:hover{
+    background-color: #293241;
+    color:  #EE6C4D;
+}
