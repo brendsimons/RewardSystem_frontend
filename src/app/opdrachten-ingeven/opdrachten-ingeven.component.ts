@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {APIService} from '../services/api.service';
+import {Router} from '@angular/router';
+import {AuthService} from '../services/auth.service';
 
 export interface PeriodicElement {
     name: string;
@@ -30,9 +34,11 @@ export class OpdrachtenIngevenComponent implements OnInit {
     displayedColumns: string[] = ['name', 'weight', 'symbol', 'position'];
     dataSource: PeriodicElement[] = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(private http: HttpClient, private api: APIService, private auth: AuthService) { }
 
   ngOnInit() {
+      // CHECK OP PERMISSION "ADMIN3"
+      console.log(this.auth.hasPermission("ADMIN3"));
   }
 
 }
