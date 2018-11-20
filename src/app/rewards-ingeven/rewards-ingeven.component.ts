@@ -27,6 +27,10 @@ export class RewardsIngevenComponent implements OnInit {
             );
     }
 
+    public backLink() {
+        return this.router.navigate(['/rewards']);
+    }
+
     ngOnInit() {
     }
 

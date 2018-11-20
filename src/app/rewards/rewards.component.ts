@@ -1,6 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
-
+import {MediaMatcher} from '@angular/cdk/layout';
+import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-rewards',
@@ -8,6 +10,7 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
   styleUrls: ['./rewards.component.scss']
 })
 export class RewardsComponent implements OnInit {
+    constructor(private router: Router) { }
 
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
@@ -17,6 +20,10 @@ export class RewardsComponent implements OnInit {
     ngOnInit() {
         this.dataSource.paginator = this.paginator;
     }
+
+    buttonClick() {
+        this.router.navigate(['/rewardIngeven']);
+    };
 }
 
 export interface PeriodicElement {

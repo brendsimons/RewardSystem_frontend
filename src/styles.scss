@@ -33,3 +33,12 @@ table {
 button {
   margin: 16px 8px;
 }
+
+footer {
+  background-color: $primary;
+  color: white;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}

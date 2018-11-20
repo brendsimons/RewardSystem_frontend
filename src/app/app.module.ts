@@ -5,10 +5,10 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgBootstrapModule } from "./sharedModules/ng-bootstrap.module";
+import { NgBootstrapModule } from './sharedModules/ng-bootstrap.module';
 import { NavbarComponent } from './navbar/navbar.component';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MaterialModule } from "../material-module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '../material-module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ShopModule } from './shop/shop.module';
 import { OpdrachtenIngevenModule } from './opdrachten-ingeven/opdrachten-ingeven.module';
@@ -16,6 +16,7 @@ import { RewardsIngevenModule } from './rewards-ingeven/rewards-ingeven.module';
 import { LoginModule } from './login/login.module';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { RewardsModule } from './rewards/rewards.module';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 export function jwtTokenGetter() {
@@ -26,6 +27,7 @@ export function jwtTokenGetter() {
   declarations: [
     AppComponent,
     NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

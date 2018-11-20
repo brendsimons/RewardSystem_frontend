@@ -21,15 +21,15 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
     // CHECK OP PERMISSION "ADMIN3"
-    console.log(this.auth.hasPermission("ADMIN3"));
-    
-    this.http.get(this.api.getUrl("/rewards")).subscribe(
+    console.log(this.auth.hasPermission('ADMIN3'));
+
+    this.http.get(this.api.getUrl('/rewards')).subscribe(
       data => {console.log(data);
         this.rewards = data;
       //  console.log(data[0].id)
       });
 
-    this.http.get(this.api.getUrl("/users")).subscribe(
+    this.http.get(this.api.getUrl('/users')).subscribe(
       data => {console.log(data);
         this.users = data;
       });
