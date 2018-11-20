@@ -14,6 +14,8 @@ import { forEach } from '@angular/router/src/utils/collection';
 })
 export class ShopComponent implements OnInit {
   rewards: any;
+  users: any;
+  rewardsclaim: any;
 
   constructor(private http: HttpClient, private api: APIService,private auth: AuthService) { }
 
@@ -29,8 +31,18 @@ export class ShopComponent implements OnInit {
 
     this.http.get(this.api.getUrl('/users')).subscribe(
       data => {console.log(data);
-
+        this.users = data;
       });
+  }
+
+  claim() {
+    this.http.get(this.api.getUrl("/rewardclaims")).subscribe(
+      data => {this.rewardsclaim = data;
+        console.log(data);
+
+     //   console.log(data[1].user.firstname);
+      });
+    
   }
 
 }
