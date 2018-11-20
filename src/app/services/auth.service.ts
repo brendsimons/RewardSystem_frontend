@@ -3,15 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { APIService } from './api.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private api: APIService) { }
 
     login(email: string, password: string): Observable<boolean> {
-        return this.http.post<{ token: string }>('https://vpn.brendsimons.be/users/login', { email: email, password: password })
+        return this.http.post<{ token: string }>(this.api.getUrl("/users/login"), { email: email, password: password })
             .pipe(
                 map(result => {
                     localStorage.setItem('access_token', result.token);
