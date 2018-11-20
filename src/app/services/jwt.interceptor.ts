@@ -11,7 +11,7 @@ export class JwtInterceptor implements HttpInterceptor {
         if (access_token) {
             request = request.clone({
                 setHeaders: {
-                    Authorization: `Bearer ${currentUser.token}`
+                    Authorization: `Bearer ${access_token}`
                 }
             });
         }
