@@ -1,37 +1,30 @@
 <div class="flex-me">
   <mat-list>
     <h3 matLine>Points</h3>
-    <p matLine>
-      <mat-list-item><p matLine>100</p></mat-list-item>
+      <mat-list-item *ngFor="let reward of rewards$">
+    <p matLine>{{reward.score}}</p>
     <mat-divider matLine></mat-divider>
-    <mat-list-item><p matLine>200</p></mat-list-item>
-    <mat-divider matLine></mat-divider>
-    <mat-list-item><p matLine>300</p></mat-list-item>
-    <mat-divider matLine></mat-divider>
-    <mat-list-item><p matLine>500</p></mat-list-item>
-    <mat-divider matLine></mat-divider>
-    </p>
+    </mat-list-item>
   </mat-list>
   <mat-list>
     <h3 matLine>Rewards</h3>
-    <mat-list-item><p matLine>Reward 1</p></mat-list-item>
-    <mat-divider matLine></mat-divider>
-    <mat-list-item><p matLine>Reward 2</p></mat-list-item>
-    <mat-divider matLine></mat-divider>
-    <mat-list-item><p matLine>Reward 3</p></mat-list-item>
-    <mat-divider matLine></mat-divider>
-    <mat-list-item><p matLine>Reward 4</p></mat-list-item>
-    <mat-divider matLine></mat-divider>
+    <mat-list-item *ngFor="let reward of rewards$">
+      <p matLine>{{reward.name}}</p>
+      <mat-divider matLine></mat-divider>
+    </mat-list-item>
   </mat-list>
   <mat-list>
     <h3 matLine>Tasks</h3>
-    <mat-list-item><p matLine>Task 1</p></mat-list-item>
-    <mat-divider matLine></mat-divider>
-    <mat-list-item><p matLine>Task 2</p></mat-list-item>
-    <mat-divider matLine></mat-divider>
-    <mat-list-item><p matLine>Task 3</p></mat-list-item>
-    <mat-divider matLine></mat-divider>
-    <mat-list-item><p matLine>Task 4</p></mat-list-item>
-    <mat-divider matLine></mat-divider>
+    <mat-list-item *ngFor="let task of tasks$">
+      <p matLine>{{task.name}}</p>
+      <mat-divider matLine></mat-divider>
+    </mat-list-item>
+  </mat-list>
+  <mat-list>
+    <h3 matLine>Claims</h3>
+    <mat-list-item *ngFor="let claim of claims$">
+      <p matLine>{{claim.message}}</p>
+      <mat-divider matLine></mat-divider>
+    </mat-list-item>
   </mat-list>
 </div>
