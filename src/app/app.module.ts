@@ -16,6 +16,7 @@ import { RewardsIngevenModule } from './rewards-ingeven/rewards-ingeven.module';
 import { LoginModule } from './login/login.module';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { RewardsModule } from './rewards/rewards.module';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 export function jwtTokenGetter() {
@@ -26,6 +27,7 @@ export function jwtTokenGetter() {
   declarations: [
     AppComponent,
     NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
