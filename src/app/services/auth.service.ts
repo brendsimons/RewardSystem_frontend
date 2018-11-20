@@ -3,12 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AuthService {
     constructor(private http: HttpClient) { }
 
-    login(username: string, password: string): Observable<boolean> {
-        return this.http.post<{ token: string }>('/api/auth', { username: username, password: password })
+    login(email: string, password: string): Observable<boolean> {
+        return this.http.post<{ token: string }>('https://vpn.brendsimons.be/users/login', { email: email, password: password })
             .pipe(
                 map(result => {
                     localStorage.setItem('access_token', result.token);

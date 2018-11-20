@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -14,6 +15,7 @@ import { ShopModule } from './shop/shop.module';
 import { OpdrachtenIngevenModule } from './opdrachten-ingeven/opdrachten-ingeven.module';
 import { RewardsIngevenModule } from './rewards-ingeven/rewards-ingeven.module';
 import { LoginModule } from './login/login.module';
+
 
 export function jwtTokenGetter() {
   return localStorage.getItem('access_token');
@@ -35,6 +37,7 @@ export function jwtTokenGetter() {
     OpdrachtenIngevenModule,
     RewardsIngevenModule,
     LoginModule,
+    HttpClientModule,
 
     JwtModule.forRoot({
       config: {
