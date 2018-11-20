@@ -20,4 +20,11 @@
       <mat-divider matLine></mat-divider>
     </mat-list-item>
   </mat-list>
+  <mat-list>
+    <h3 matLine>Claims</h3>
+    <mat-list-item *ngFor="let claim of claims$">
+      <p matLine>{{claim.message}}</p>
+      <mat-divider matLine></mat-divider>
+    </mat-list-item>
+  </mat-list>
 </div>

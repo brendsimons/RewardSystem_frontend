@@ -14,6 +14,7 @@ import {Observable} from "rxjs";
 export class DashboardComponent implements OnInit {
   rewards$: any;
   tasks$: any;
+  claims$: any;
 
     constructor(private http: HttpClient, private api: APIService, private router: Router) { }
 
@@ -29,6 +30,13 @@ export class DashboardComponent implements OnInit {
             .subscribe(
                 data => {
                     this.tasks$ = data;
+                    console.log(data);
+                }
+            );
+        this.http.get(this.api.getUrl('/claims'))
+            .subscribe(
+                data => {
+                    this.claims$ = data;
                     console.log(data);
                 }
             );
