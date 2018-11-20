@@ -13,8 +13,7 @@ import {AuthService} from '../services/auth.service';
 export class OpdrachtenIngevenComponent implements OnInit {
     tasks$: any;
 
-    displayedColumns: string[] = ['name', 'score' ];
-    dataSource = this.tasks$;
+    displayedColumns: string[] = ['naam', 'credits' ];
 
   constructor(private http: HttpClient, private api: APIService, private auth: AuthService) { }
 
@@ -27,6 +26,7 @@ export class OpdrachtenIngevenComponent implements OnInit {
               data => {
                   this.tasks$ = data;
                   console.log(data);
+                  console.log(this.tasks$[1].name);
               }
           );
   }
