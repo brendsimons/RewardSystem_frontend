@@ -6,7 +6,7 @@ import {MaterialModule} from "../../material-module";
 @NgModule({
   imports: [
     CommonModule,
-      MaterialModule
+      MaterialModule,
   ],
   declarations: [DashboardComponent]
 })
