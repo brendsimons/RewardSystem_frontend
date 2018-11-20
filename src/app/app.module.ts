@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+<<<<<<< HEAD
 
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -9,10 +10,19 @@ import { NgBootstrapModule } from "./sharedModules/ng-bootstrap.module";
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "../material-module";
+=======
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import {NgBootstrapModule} from './sharedModules/ng-bootstrap.module';
+import { NavbarComponent } from './navbar/navbar.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule} from '../material-module';
+>>>>>>> 91bf19b1c6c27727ab6c3e486eababab5a7e95a7
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ShopModule } from './shop/shop.module';
 import { OpdrachtenIngevenModule } from './opdrachten-ingeven/opdrachten-ingeven.module';
 import { RewardsIngevenModule } from './rewards-ingeven/rewards-ingeven.module';
+import { LoginModule } from './login/login.module';
 
 export function jwtTokenGetter() {
   return localStorage.getItem('access_token');
@@ -21,7 +31,7 @@ export function jwtTokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +43,7 @@ export function jwtTokenGetter() {
     ShopModule,
     OpdrachtenIngevenModule,
     RewardsIngevenModule,
+    LoginModule,
 
     JwtModule.forRoot({
       config: {
