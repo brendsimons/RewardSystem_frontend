@@ -4,6 +4,8 @@ import { AuthService } from '../services/auth.service';
 import { APIService } from '../services/api.service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-shop',
@@ -11,18 +13,24 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
-  data: any = {};
+  rewards: any;
 
   constructor(private http: HttpClient, private api: APIService,private auth: AuthService) { }
 
   ngOnInit() {
     // CHECK OP PERMISSION "ADMIN3"
     console.log(this.auth.hasPermission("ADMIN3"));
+    
+    this.http.get(this.api.getUrl("/rewards")).subscribe(
+      data => {console.log(data);
+        this.rewards = data;
+      //  console.log(data[0].id)
+      });
+
+    this.http.get(this.api.getUrl("/users")).subscribe(
+      data => {console.log(data);
+
+      });
   }
-
-//  getData(){
- //   return this.http.get(this.api.getUrl("/rewards/")map(result => {console.log(data)});
-//  }
-
 
 }
