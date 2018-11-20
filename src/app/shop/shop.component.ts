@@ -26,6 +26,11 @@ export class ShopComponent implements OnInit {
         this.rewards = data;
       //  console.log(data[0].id)
       });
+
+    this.http.get(this.api.getUrl("/users")).subscribe(
+      data => {console.log(data);
+
+      });
   }
 
 }

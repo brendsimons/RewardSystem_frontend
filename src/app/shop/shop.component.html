@@ -1,11 +1,11 @@
 <div class="flex-me">
 <mat-card *ngFor="let reward of rewards">
-  <mat-card-title>Naam {{reward.name}}</mat-card-title>
-<!--  <img mat-card-image ng-src="{{reward.image}}" alt="test">  -->
-  <mat-card-subtitle>Prijs  {{reward.score}}</mat-card-subtitle>
-  <mat-card-content>
+  <mat-card-title>{{reward.name}}</mat-card-title>
+  <img mat-card-image src="{{reward.image}}" alt="Foto van {{reward.name}}">  
+  <mat-card-subtitle>{{reward.score}} punten</mat-card-subtitle>
+<!--  <mat-card-content>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam accumsan, massa a sodales pharetra, massa odio rhoncus justo, sed rutrum enim leo ut neque. Vivamus arcu dolor, convallis eu libero et, scelerisque consectetur risus. Vestibulum tempor sem eget ullamcorper auctor. Phasellus dignissim sodales tortor. Pellentesque quis libero sed augue tempor fringilla. 
-  </mat-card-content>
+  </mat-card-content>-->
   <mat-card-actions>
       <button md-button class="button">Prijs claimen</button>
    </mat-card-actions>
