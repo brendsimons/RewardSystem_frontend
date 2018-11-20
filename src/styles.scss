@@ -12,7 +12,7 @@ $theme-colors: (
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-.navbar-dark {
+.mat-toolbar.mat-primary {
   background-color: $primary !important;
 }
 .mat-nav-list {
