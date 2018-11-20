@@ -1,20 +1,20 @@
 <mat-card class="my-card">
-    <mat-card-title>
-        Reward toevoegen
-    </mat-card-title>
-    <mat-card-content>
-        <form class="my-form">
+    <form class="my-form" (ngSubmit)="submit()">
+        <mat-card-title>
+            Reward toevoegen
+        </mat-card-title>
+        <mat-card-content>
             <mat-form-field class="full-width">
                 <mat-label>Omschrijving</mat-label>
-                <input  matInput  placeholder="Omschrijving" name="name">
+                <input  matInput  placeholder="Omschrijving" name="name" [(ngModel)]="name">
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-label>Aantal punten</mat-label>
-                <input  matInput="" placeholder="Aantal punten" name="score">
+                <input  matInput="" placeholder="Aantal punten" name="score" [(ngModel)]="score">
             </mat-form-field>
-        </form>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="primary">VOEG TOE</button>
-    </mat-card-actions>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">VOEG TOE</button>
+        </mat-card-actions>
+    </form>
 </mat-card>

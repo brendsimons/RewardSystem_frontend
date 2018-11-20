@@ -1,13 +1,14 @@
 <div class="nav-container" [class.is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
     <h1 class="app-name">Reward System</h1>
   </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-container"
-                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
       <mat-nav-list>
         <h3 class="titel"><a href="#!">Reward System</a></h3>
         <ul>
@@ -43,15 +44,15 @@
               <i class="fas fa-sign-in-alt"></i> Login</a>
           </li>
           <li>
-            <a class="nav-link" (click)="snav.toggle()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a class="nav-link" (click)="logout(); snav.toggle()"><i class="fas fa-sign-out-alt"></i> Logout</a>
           </li>
         </ul>
       </mat-nav-list>
     </mat-sidenav>
-      <mat-sidenav-content>
-        <div class="container">
+    <mat-sidenav-content>
+      <div class="container">
         <router-outlet></router-outlet>
-        </div>
-      </mat-sidenav-content>
+      </div>
+    </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
