@@ -1,40 +1,39 @@
-<mat-grid-list cols="2">
-  <mat-grid-tile>
-    <div>
-    <mat-form-field>
-      <input size="100" matInput placeholder="Opdracht">
-    </mat-form-field>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <div>
-      <mat-form-field>
-        <input type="number" matInput placeholder="Credits">
-      </mat-form-field>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="1">
-    <div>
-      <button mat-raised-button (click)="addColumn()"> Add column </button>
-      <button mat-raised-button (click)="removeColumn()"> Remove column </button>
-      <button mat-raised-button (click)="shuffle()"> Shuffle </button>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <div>
-      <table mat-table [dataSource]="data" class="mat-elevation-z8">
-        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-          <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-          <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-        </ng-container>
+      <mat-card >
+      <mat-card-header>
+        <mat-card-title>Overzicht opdrachten</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div>
+          <table mat-table [dataSource]="data" class="mat-elevation-z8">
+            <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+              <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+              <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+            </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-      </table>
-    </div>
-  </mat-grid-tile>
-</mat-grid-list>
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Opdracht toevoegen
+          </mat-panel-title>
+          <mat-panel-description>
+            Geef opdrachtbeschrijving en aantal credits
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-<h1>hallo</h1>
+        <mat-form-field inputOpdracht>
+          <input matInput placeholder="Opdracht">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="number" matInput placeholder="Credits">
+        </mat-form-field>
+      </mat-expansion-panel>
+    </mat-card>
+
 
 
