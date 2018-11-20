@@ -6,11 +6,13 @@ import { OpdrachtenIngevenComponent } from './opdrachten-ingeven/opdrachten-inge
 import { RewardsIngevenComponent } from './rewards-ingeven/rewards-ingeven.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import {RewardsComponent} from './rewards/rewards.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
   { path: 'opdrachtenIngeven', component: OpdrachtenIngevenComponent },
+    { path: 'rewards', component: RewardsComponent },
   { path: 'rewardsIngeven', component: RewardsIngevenComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   // Homepage doorverwijzen naar dashboard

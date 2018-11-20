@@ -22,7 +22,7 @@ export class RewardsIngevenComponent implements OnInit {
     public submit() {
         this.http.post(this.api.getUrl('/rewards'), { name: this.name, score: this.score })
             .subscribe(
-                result => this.router.navigate(['dashboard']),
+                result => this.router.navigate(['shop']),
                 err => this.error = 'Could not authenticate'
             );
     }
