@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgBootstrapModule } from "./sharedModules/ng-bootstrap.module";
@@ -13,6 +14,7 @@ import { ShopModule } from './shop/shop.module';
 import { OpdrachtenIngevenModule } from './opdrachten-ingeven/opdrachten-ingeven.module';
 import { RewardsIngevenModule } from './rewards-ingeven/rewards-ingeven.module';
 import { LoginModule } from './login/login.module';
+import { JwtInterceptor } from './services/jwt.interceptor';
 
 
 export function jwtTokenGetter() {
@@ -51,7 +53,9 @@ export function jwtTokenGetter() {
     })
   ],
 
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
