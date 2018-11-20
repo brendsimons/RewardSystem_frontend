@@ -1,8 +1,10 @@
 // Overschrijf BS variabelen en mixins
 $theme-colors: (
-        'primary': black,
-        'danger': #F04C25,
-        'salmon' : salmon
+        'primary': #293241,
+        'background': #E0FBFC,
+        'lightRed' : #EE6C4D,
+        'blue' : #3D5A80,
+        'lightBlue': #98C1D9
 );
 
 // Link naar BS en FA
@@ -17,9 +19,13 @@ $theme-colors: (
   flex: 2 !important;
 }
 
+
 .flex-me {
   display: inline-flex;
   flex-flow: row wrap;
+  text-align: justify;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 table {
