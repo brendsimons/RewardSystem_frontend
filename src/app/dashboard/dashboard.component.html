@@ -16,7 +16,7 @@
   <mat-list>
     <h3 matLine>Taken</h3>
     <mat-list-item *ngFor="let task of tasks$">
-      <p matLine>{{task.name}}</p>
+      <p matLine>{{task.name}} - {{task.score}} punten</p>
       <mat-divider matLine></mat-divider>
     </mat-list-item>
   </mat-list>
@@ -30,7 +30,7 @@
   <mat-list>
     <h3 matLine>Claims - Rewards</h3>
     <mat-list-item *ngFor="let claim of rewardclaims$">
-      <p matLine>{{claim.status}}</p>
+      <p matLine>{{claim.user.firstName}} {{claim.user.lastName}}: {{claim.status}}</p>
       <mat-divider matLine></mat-divider>
     </mat-list-item>
   </mat-list>
