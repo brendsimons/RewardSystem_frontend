@@ -30,6 +30,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styles: []
 })
 export class OpdrachtenIngevenComponent implements OnInit {
+    tasks$: any;
 
     displayedColumns: string[] = ['name', 'weight', 'symbol', 'position'];
     dataSource: PeriodicElement[] = ELEMENT_DATA;
@@ -39,6 +40,14 @@ export class OpdrachtenIngevenComponent implements OnInit {
   ngOnInit() {
       // CHECK OP PERMISSION "ADMIN3"
       console.log(this.auth.hasPermission('ADMIN3'));
+
+      this.http.get(this.api.getUrl('/tasks'))
+          .subscribe(
+              data => {
+                  this.tasks$ = data;
+                  console.log(data);
+              }
+          );
   }
 
 }
