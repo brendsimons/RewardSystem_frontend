@@ -38,7 +38,7 @@ export class OpdrachtenIngevenComponent implements OnInit {
 
   ngOnInit() {
       // CHECK OP PERMISSION "ADMIN3"
-      console.log(this.auth.hasPermission("ADMIN3"));
+      console.log(this.auth.hasPermission('ADMIN3'));
   }
 
 }
