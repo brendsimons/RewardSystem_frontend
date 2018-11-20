@@ -15,6 +15,7 @@ import { OpdrachtenIngevenModule } from './opdrachten-ingeven/opdrachten-ingeven
 import { RewardsIngevenModule } from './rewards-ingeven/rewards-ingeven.module';
 import { LoginModule } from './login/login.module';
 import { JwtInterceptor } from './services/jwt.interceptor';
+import { RewardsModule } from './rewards/rewards.module';
 
 
 export function jwtTokenGetter() {
@@ -50,7 +51,9 @@ export function jwtTokenGetter() {
           'https://vpn.brendsimons.be/users/register',
         ]
       }
-    })
+    }),
+
+    RewardsModule
   ],
 
   providers: [
