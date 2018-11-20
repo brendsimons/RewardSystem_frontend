@@ -26,4 +26,8 @@ export class AuthService {
     public get loggedIn(): boolean {
         return (localStorage.getItem('access_token') !== null);
     }
+
+    public hasPermission(permission: string): boolean {
+        return true;
+    }
 }
