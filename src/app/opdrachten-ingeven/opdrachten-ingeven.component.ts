@@ -28,32 +28,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class OpdrachtenIngevenComponent implements OnInit {
 
     displayedColumns: string[] = ['name', 'weight', 'symbol', 'position'];
-    columnsToDisplay: string[] = this.displayedColumns.slice();
-    data: PeriodicElement[] = ELEMENT_DATA;
-
-    addColumn() {
-        const randomColumn = Math.floor(Math.random() * this.displayedColumns.length);
-        this.columnsToDisplay.push(this.displayedColumns[randomColumn]);
-    }
-
-    removeColumn() {
-        if (this.columnsToDisplay.length) {
-            this.columnsToDisplay.pop();
-        }
-    }
-
-    shuffle() {
-        let currentIndex = this.columnsToDisplay.length;
-        while (0 !== currentIndex) {
-            const randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-
-            // Swap
-            const temp = this.columnsToDisplay[currentIndex];
-            this.columnsToDisplay[currentIndex] = this.columnsToDisplay[randomIndex];
-            this.columnsToDisplay[randomIndex] = temp;
-        }
-    }
+    dataSource: PeriodicElement[] = ELEMENT_DATA;
 
   constructor() { }
 
