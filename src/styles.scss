@@ -21,4 +21,7 @@ $theme-colors: (
 .flex-me {
   display: inline-flex;
   flex-flow: row wrap;
+  text-align: justify;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
