@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
   { path: 'opdrachtenIngeven', component: OpdrachtenIngevenComponent },
-  { path: 'rewardsIngeven', component: RewardsIngevenComponent },
+  { path: 'rewardsIngeven', component: RewardsIngevenComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   // Homepage doorverwijzen naar dashboard
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
