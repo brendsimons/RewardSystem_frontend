@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
     providedIn: 'root'
@@ -23,11 +24,22 @@ export class AuthService {
         localStorage.removeItem('access_token');
     }
 
-    public get loggedIn(): boolean {
+    public loggedIn(): boolean {
         return (localStorage.getItem('access_token') !== null);
     }
 
+    public getJWTToken() {
+        return localStorage.getItem('access_token');
+    }
+
     public hasPermission(permission: string): boolean {
-        return true;
+        if (!this.loggedIn()) {
+            return false;
+        }
+
+        const jwthelper = new JwtHelperService();
+        const permissions = jwthelper.decodeToken(this.getJWTToken()).permissions;
+
+        return permissions.includes(permission);
     }
 }
