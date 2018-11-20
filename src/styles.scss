@@ -6,6 +6,13 @@ $theme-colors: (
         'blue' : #3D5A80,
         'lightBlue': #98C1D9
 );
+$theme-colors2: (
+        'primary': #E0FBFC,
+        'background': #293241,
+        'lightRed' : #EE6C4D,
+        'blue' : #3D5A80,
+        'lightBlue': #98C1D9
+);
 
 // Link naar BS en FA
 @import "~bootstrap/scss/bootstrap";
