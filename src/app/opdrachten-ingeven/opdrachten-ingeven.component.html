@@ -1,4 +1,5 @@
       <mat-card >
+          <form class="my-form" (ngSubmit)="submit()">
       <mat-card-header>
         <mat-card-title>Overzicht opdrachten</mat-card-title>
       </mat-card-header>
@@ -35,15 +36,18 @@
             Geef opdrachtbeschrijving en aantal credits
           </mat-panel-description>
         </mat-expansion-panel-header>
-
-        <mat-form-field inputOpdracht>
-          <input matInput placeholder="Opdracht">
+        <mat-form-field>
+          <input matInput placeholder="Opdracht" name="opdracht" type="text" [(ngModel)]="opdracht">
         </mat-form-field>
         <mat-form-field>
-          <input type="number" matInput placeholder="Credits">
+          <input type="number" matInput placeholder="Credits" name="punten" type="text" [(ngModel)]="punten">
         </mat-form-field>
-        <button
+          <mat-card-actions>
+              <button mat-raised-button color="primary" type="submit">LOGIN</button>
+          </mat-card-actions>
       </mat-expansion-panel>
+
+          </form>
     </mat-card>
 
 
