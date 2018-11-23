@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APIService } from '../services/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { first } from 'rxjs/operators';
+import {first, map} from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
+
 
 @Component({
     selector: 'app-tasks',
@@ -14,18 +16,24 @@ import { Observable } from 'rxjs';
 export class TasksComponent implements OnInit {
     tasks$: any;
 
-    public opdracht: string;
-    public punten: string;
+    public opdracht;
+    public punten;
+    public error;
 
-    displayedColumns: string[] = ['naam', 'credits'];
+    displayedColumns: string[] = ['naam', 'credits', 'bewerk'];
 
-    constructor(private http: HttpClient, private api: APIService, private auth: AuthService) { }
+    constructor(private http: HttpClient, private api: APIService, private auth: AuthService,
+                private router: Router) { }
+
+
 
     public submit() {
-
-
+        this.http.post(this.api.getUrl('/tasks'), { name: this.opdracht, score: this.punten })
+            .subscribe(
+                result => this.router.navigate(['tasks']),
+                err => this.error = 'Could not authenticate'
+            );
     }
-
     ngOnInit() {
         // CHECK OP PERMISSION "ADMIN3"
         console.log(this.auth.hasPermission('ADMIN3'));
@@ -35,7 +43,7 @@ export class TasksComponent implements OnInit {
                 data => {
                     this.tasks$ = data;
                     console.log(data);
-                    console.log(this.tasks$[1].name);
+                    console.log(this.tasks$[1].id);
                 }
             );
     }
