@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { APIService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
 import {Observable} from "rxjs";
 
 @Component({
@@ -18,7 +19,7 @@ export class DashboardComponent implements OnInit {
     rewardclaims$: any;
     currentUser: any;
 
-    constructor(private http: HttpClient, private api: APIService, private router: Router) { }
+    constructor(private http: HttpClient, private api: APIService, private router: Router, public auth: AuthService) { }
 
     ngOnInit() {
         this.http.get(this.api.getUrl('/rewards'))
