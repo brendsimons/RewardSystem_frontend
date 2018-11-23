@@ -31,7 +31,7 @@ export class ShopComponent implements OnInit {
     // CHECK OP PERMISSION "ADMIN3"
     console.log(this.auth.hasPermission('ADMIN3'));
 
-    this.http.get(this.api.getUrl('/rewardClaims')).subscribe(
+    this.http.get(this.api.getUrl('/rewards')).subscribe(
       data => {console.log(data);
         this.rewards = data;
       //  console.log(data[0].id)

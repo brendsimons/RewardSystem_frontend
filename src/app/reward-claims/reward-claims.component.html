@@ -7,7 +7,7 @@
         <app-finished-claims-table [hidden]="hideFinishedClaims"></app-finished-claims-table>
     </mat-card-content>
     <mat-card-actions class="text-right">
-        <button mat-button color="primary" (click)="claimRouteClick()">Afgewerkte aanvragen</button>
-        <button mat-raised-button color="primary" (click)="buttonClick()">VOEG NIEUWE REWARD TOE</button>
+        <button mat-raised-button color="primary" (click)="finishedClaimsButton()" [hidden]="hideFinishedClaims">Afgewerkte aanvragen</button>
+        <button mat-raised-button color="primary" (click)="claimsButton()" [hidden]="hidePendingClaims">Lopende aanvragen</button>
     </mat-card-actions>
 </mat-card>

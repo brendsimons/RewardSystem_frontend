@@ -1,8 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
-import {MediaMatcher} from '@angular/cdk/layout';
-import {AuthService} from '../services/auth.service';
-import {Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-rewards',
@@ -13,17 +9,18 @@ export class RewardClaimsComponent implements OnInit {
     hideFinishedClaims = true;
     hidePendingClaims = false;
 
-    constructor(private router: Router) { }
+    constructor() { }
 
     ngOnInit() {
     }
 
-    buttonClick() {
-        this.router.navigate(['/rewardIngeven']);
-    };
-
-    claimRouteClick() {
+    finishedClaimsButton() {
         this.hidePendingClaims = true;
         this.hideFinishedClaims = false;
+    }
+
+    claimsButton() {
+        this.hidePendingClaims = false;
+        this.hideFinishedClaims = true;
     }
 }

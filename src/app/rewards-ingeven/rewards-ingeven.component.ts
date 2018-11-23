@@ -20,7 +20,7 @@ export class RewardsIngevenComponent implements OnInit {
     constructor(private http: HttpClient, private api: APIService, private router: Router) { }
 
     public submit() {
-        this.http.post(this.api.getUrl('/reward-claims'), { name: this.name, score: this.score })
+        this.http.post(this.api.getUrl('/rewards'), { name: this.name, score: this.score })
             .subscribe(
                 result => this.router.navigate(['shop']),
                 err => this.error = 'Could not authenticate'
@@ -28,7 +28,7 @@ export class RewardsIngevenComponent implements OnInit {
     }
 
     public backLink() {
-        return this.router.navigate(['/reward-claims']);
+        return this.router.navigate(['/shop']);
     }
 
     ngOnInit() {
