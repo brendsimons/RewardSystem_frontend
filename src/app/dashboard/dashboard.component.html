@@ -1,67 +1,26 @@
 <div class="flex-me">
-  <mat-card *ngIf="currentUser && rewards$?.length > 0 && !auth.hasPermission('dashboard_admin')">
-    <mat-card-title matLine>Rewards</mat-card-title>
-    <mat-card *ngFor="let reward of rewards$">
-      <mat-card-content>
-        <img mat-card-image src="{{reward.image}}" alt="{{reward.name}}"/>
-        <p>{{reward.name}} - {{reward.score}}</p>
+  <mat-card class="kaart" *ngIf="currentUser && myTaskClaims$?.length > 0" fxLayout="row" fxLayoutWrap>
+    <mat-card-title matLine>Mijn taken</mat-card-title>
+    <mat-card *ngFor="let claim of myTaskClaims$">
+      <mat-card-content *ngIf="currentUser">
+        <p>{{claim.task.name}} - {{claim.message}}</p>
+        <p>{{claim.task.score}} punten</p>
       </mat-card-content>
     </mat-card>
   </mat-card>
-  <ng-container *ngIf="currentUser && !auth.hasPermission('dashboard_admin')">
-    <mat-card *ngIf="tasks$?.length > 0">
-      <mat-card-title matLine>Taken</mat-card-title>
-      <mat-card *ngFor="let task of tasks$">
-        <mat-card-content *ngIf="task">
-          <p>{{task.name}} - {{task.score}} punten</p>
-        </mat-card-content>
-      </mat-card>
-    </mat-card>
-  </ng-container>
-  <mat-card *ngIf="currentUser && tasks$?.length > 0 && auth.hasPermission('dashboard_admin')">
-    <mat-card-title matLine>Taken</mat-card-title>
-    <mat-card *ngFor="let task of tasks$">
-      <mat-card-content>
-        <p>{{task.name}} - {{task.score}} punten</p>
-      </mat-card-content>
-    </mat-card>
-  </mat-card>
-  <!--<mat-card *ngIf="currentUser && taskclaims$?.length > 0 && !auth.hasPermission('dashboard_admin')">
-    <mat-card-title matLine>Claims - Taken</mat-card-title>
-    <mat-card *ngFor="let claim of taskclaims$">
-      <mat-card-content *ngIf="currentUser && claim.user.id == currentUser.id">
-        <p>{{claim.message}} - {{claim.user.firstName}}</p>
-      </mat-card-content>
-    </mat-card>
-  </mat-card>
-  <mat-card *ngIf="currentUser && taskclaims$?.length > 0 && auth.hasPermission('dashboard_admin')">
-    <mat-card-title matLine>Claims - Taken</mat-card-title>
-    <mat-card *ngFor="let claim of taskclaims$">
-      <mat-card-content>
-        <p>{{claim.message}} - {{claim.user.firstName}}</p>
-      </mat-card-content>
-    </mat-card>
-  </mat-card>-->
-  <mat-card *ngIf="myRewardClaims$?.length > 0 && !auth.hasPermission('dashboard_admin')">
-    <mat-card-title matLine>Claims - Rewards</mat-card-title>
+  <mat-card class="kaart" *ngIf="myRewardClaims$?.length > 0" fxLayout="row" fxLayoutWrap>
+    <mat-card-title matLine>Mijn rewards</mat-card-title>
       <mat-card *ngFor="let claim of myRewardClaims$">
-        <mat-card-content *ngIf="claim.status != 'rewarded' && currentUser && claim.user.id == currentUser.id">
-          <p>{{claim.user.firstName}} {{claim.user.lastName}}: {{claim.status}}</p>
+        <mat-card-content *ngIf="claim.status != 'rewarded' && currentUser">
+          <img mat-card-image src="{{claim.reward.image}}" alt="foto {{claim.reward.name}}"/>
+          <p>
+            <img mat-card-avatar src="{{currentUser.image}}"/>
+            {{claim.user.firstName}} {{claim.user.lastName}}: {{claim.status}}</p>
           <p *ngIf="claim.reward">
             Reward: {{claim.reward.name}}
           </p>
+          <p>{{claim.reward.score}} punten</p>
         </mat-card-content>
       </mat-card>
   </mat-card>
-  <!--<mat-card *ngIf="rewardclaims$?.length > 0 && auth.hasPermission('dashboard_admin')">
-    <mat-card-title matLine>Claims - Rewards</mat-card-title>
-    <mat-card *ngFor="let claim of rewardclaims$">
-      <mat-card-content *ngIf="claim.status != 'rewarded'">
-        <p>{{claim.user.firstName}} {{claim.user.lastName}}: {{claim.status}}</p>
-        <p *ngIf="claim.reward">
-          Reward: {{claim.reward.name}}
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </mat-card>-->
 </div>
