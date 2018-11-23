@@ -15,14 +15,14 @@ import {Observable} from "rxjs";
 export class DashboardComponent implements OnInit {
     rewards$: any;
     tasks$: any;
-    taskclaims$: any;
-    rewardclaims$: any;
+    myTaskClaims$: any;
+    myRewardClaims$: any;
     currentUser: any;
 
     constructor(private http: HttpClient, private api: APIService, private router: Router, private auth: AuthService) { }
 
     ngOnInit() {
-        this.http.get(this.api.getUrl('/reward-claims'))
+        this.http.get(this.api.getUrl('/rewardclaims'))
             .subscribe(
                 data => {
                     this.rewards$ = data;
@@ -39,14 +39,14 @@ export class DashboardComponent implements OnInit {
         this.http.get(this.api.getUrl('/taskclaims'))
             .subscribe(
                 data => {
-                    this.taskclaims$ = data;
+                    this.myTaskClaims$ = data;
                     console.log(data);
                 }
             );
-        this.http.get(this.api.getUrl('/rewardclaims'))
+        this.http.get(this.api.getUrl('/rewardclaims/myown'))
             .subscribe(
                 data => {
-                    this.rewardclaims$ = data;
+                    this.myRewardClaims$ = data;
                     console.log(data);
                 }
             );

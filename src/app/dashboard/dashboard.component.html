@@ -26,7 +26,7 @@
       </mat-card-content>
     </mat-card>
   </mat-card>
-  <mat-card *ngIf="currentUser && taskclaims$?.length > 0 && !auth.hasPermission('dashboard_admin')">
+  <!--<mat-card *ngIf="currentUser && taskclaims$?.length > 0 && !auth.hasPermission('dashboard_admin')">
     <mat-card-title matLine>Claims - Taken</mat-card-title>
     <mat-card *ngFor="let claim of taskclaims$">
       <mat-card-content *ngIf="currentUser && claim.user.id == currentUser.id">
@@ -41,10 +41,10 @@
         <p>{{claim.message}} - {{claim.user.firstName}}</p>
       </mat-card-content>
     </mat-card>
-  </mat-card>
-  <mat-card *ngIf="rewardclaims$?.length > 0 && !auth.hasPermission('dashboard_admin')">
+  </mat-card>-->
+  <mat-card *ngIf="myRewardClaims$?.length > 0 && !auth.hasPermission('dashboard_admin')">
     <mat-card-title matLine>Claims - Rewards</mat-card-title>
-      <mat-card *ngFor="let claim of rewardclaims$">
+      <mat-card *ngFor="let claim of myRewardClaims$">
         <mat-card-content *ngIf="claim.status != 'rewarded' && currentUser && claim.user.id == currentUser.id">
           <p>{{claim.user.firstName}} {{claim.user.lastName}}: {{claim.status}}</p>
           <p *ngIf="claim.reward">
@@ -53,7 +53,7 @@
         </mat-card-content>
       </mat-card>
   </mat-card>
-  <mat-card *ngIf="rewardclaims$?.length > 0 && auth.hasPermission('dashboard_admin')">
+  <!--<mat-card *ngIf="rewardclaims$?.length > 0 && auth.hasPermission('dashboard_admin')">
     <mat-card-title matLine>Claims - Rewards</mat-card-title>
     <mat-card *ngFor="let claim of rewardclaims$">
       <mat-card-content *ngIf="claim.status != 'rewarded'">
@@ -63,5 +63,5 @@
         </p>
       </mat-card-content>
     </mat-card>
-  </mat-card>
+  </mat-card>-->
 </div>
