@@ -23,8 +23,8 @@
             </a>
           </li>
           <li>
-            <a class="nav-link" href="#!" (click)="snav.toggle()">
-              <i class="fas fa-chart-line"></i> Klassement
+            <a class="nav-link" routerLink="/rankings" (click)="snav.toggle()">
+              <i class="fas fa-chart-line"></i> Rankings
             </a>
           </li>
           <li>
@@ -49,8 +49,8 @@
         </ul>
       </mat-nav-list>
     </mat-sidenav>
-      <mat-sidenav-content>
-        <div class="container-fluid">
+    <mat-sidenav-content>
+      <div class="container-fluid">
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>

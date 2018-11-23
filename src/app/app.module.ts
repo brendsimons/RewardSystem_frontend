@@ -17,6 +17,7 @@ import { LoginModule } from './login/login.module';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { RewardsModule } from './rewards/rewards.module';
 import { FooterComponent } from './components/footer/footer.component';
+import { RankingsModule } from './rankings/rankings.module';
 
 
 export function jwtTokenGetter() {
@@ -41,6 +42,7 @@ export function jwtTokenGetter() {
     RewardsIngevenModule,
     LoginModule,
     HttpClientModule,
+    RankingsModule,
 
     JwtModule.forRoot({
       config: {
