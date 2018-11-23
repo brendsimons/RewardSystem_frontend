@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
     rewardclaims$: any;
     currentUser: any;
 
-    constructor(private http: HttpClient, private api: APIService, private router: Router, public auth: AuthService) { }
+    constructor(private http: HttpClient, private api: APIService, private router: Router, private auth: AuthService) { }
 
     ngOnInit() {
         this.http.get(this.api.getUrl('/rewards'))

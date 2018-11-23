@@ -60,7 +60,7 @@ export class ShopComponent implements OnInit {
         this.user.id
       });
 
-     this.http.put(this.api.getUrl("/users/" + userId), {scoreUser: this.scoreUser - 1}).subscribe(
+     this.http.put(this.api.getUrl("/users/" + this.user.id), {scoreUser: this.scoreUser - 1}).subscribe(
        result => console.log("succes"),
        err => this.error = 'Could not authenticate'
      );
