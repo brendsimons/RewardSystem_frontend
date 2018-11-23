@@ -6,5 +6,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 1) Clone this repository
 2) Open a terminal in the root of this project.
-3) Run `npm install`.
-4) Run `ng serve` (and keep it running while using the application).
+3) Edit the API base url in `src/app/services/api.service.ts`.
+4) Run `npm install`.
+5) Run `ng serve` (and keep it running while using the application).
