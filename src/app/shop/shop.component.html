@@ -9,8 +9,10 @@
   
     [ngClass]="{true: 'succes', false: 'fail'}[ user.credits > reward.score  ]"
     </mat-card-content>-->
-  <mat-card-actions>
-      <button md-button class="button" (click)="claim(reward.id)">Prijs claimen </button>
+    
+  <mat-card-actions >
+      <button *ngIf="scoreUser >= reward.score" md-button class="button" (click)="claim(reward.id)">Prijs claimen </button>
+      <button md-button class="button" (click)="aanpassen(reward.id)">Aanpassen</button>
    </mat-card-actions>
 </mat-card>
 </div>
