@@ -18,18 +18,19 @@
             </a>
           </li>
           <li>
+            <a class="nav-link" routerLink="/tasks" routerLinkActive="active" (click)="snav.toggle()">
+              <i class="fas fa-tasks"></i> Opdrachten
+            </a>
+          </li>
+          <li>
             <a class="nav-link" routerLink="/shop" routerLinkActive="active" (click)="snav.toggle()">
-              <i class="fas fa-shopping-basket"></i> Shop
+              <i class="fas fa-shopping-basket"></i> Winkel
             </a>
           </li>
           <li>
-            <a class="nav-link" href="#!" (click)="snav.toggle()">
-              <i class="fas fa-chart-line"></i> Klassement
-            </a>
-          </li>
-          <li>
-            <a class="nav-link" routerLink="/opdrachtenIngeven" routerLinkActive="active" (click)="snav.toggle()">
-              <i class="fas fa-tasks"></i> Opdrachten ingeven
+
+            <a class="nav-link" routerLink="/rankings" (click)="snav.toggle()">
+              <i class="fas fa-chart-line"></i> Ranglijst
             </a>
           </li>
           <li>
@@ -41,19 +42,19 @@
         <ul>
           <li>
             <a class="nav-link" routerLink="/login" routerLinkActive="active" (click)="snav.toggle()">
-              <i class="fas fa-sign-in-alt"></i> Login</a>
+              <i class="fas fa-sign-in-alt"></i> Inloggen</a>
           </li>
           <li>
-            <a class="nav-link" (click)="logout(); snav.toggle()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a class="nav-link" (click)="logout(); snav.toggle()"><i class="fas fa-sign-out-alt"></i> Uitloggen</a>
           </li>
         </ul>
       </mat-nav-list>
     </mat-sidenav>
-      <mat-sidenav-content>
-        <div class="container-fluid">
+    <mat-sidenav-content>
+      <div class="container-fluid">
         <router-outlet></router-outlet>
       </div>
+      <app-footer></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  <app-footer></app-footer>
 </div>

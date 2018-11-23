@@ -2,18 +2,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShopComponent } from './shop/shop.component';
-import { OpdrachtenIngevenComponent } from './opdrachten-ingeven/opdrachten-ingeven.component';
+import { TasksComponent } from './tasks/tasks.component';
 import { RewardsIngevenComponent } from './rewards-ingeven/rewards-ingeven.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
-import {RewardsComponent} from './rewards/rewards.component';
+import { RewardsComponent } from './rewards/rewards.component';
+import { RankingsComponent } from './rankings/rankings.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
-  { path: 'opdrachtenIngeven', component: OpdrachtenIngevenComponent, canActivate: [AuthGuard] },
-    { path: 'rewards', component: RewardsComponent },
+  { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard] },
+  { path: 'rewards', component: RewardsComponent },
   { path: 'rewardIngeven', component: RewardsIngevenComponent, canActivate: [AuthGuard] },
+  { path: 'rankings', component: RankingsComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   // Homepage doorverwijzen naar dashboard
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
