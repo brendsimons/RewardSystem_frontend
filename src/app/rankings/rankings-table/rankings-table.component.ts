@@ -28,7 +28,7 @@ export class RankingsTableComponent implements OnInit {
                     return b.score - a.score;
                 });
 
-                for (var i = 1; i <= userArray.length; i++) {
+                for (let i = 1; i <= userArray.length; i++) {
                     userArray[i - 1].position = i;
                 }
 

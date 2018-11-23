@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
     constructor(private http: HttpClient, private api: APIService, private router: Router) { }
 
     ngOnInit() {
-        this.http.get(this.api.getUrl('/rewards'))
+        this.http.get(this.api.getUrl('/reward-claims'))
             .subscribe(
                 data => {
                     this.rewards$ = data;

@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgBootstrapModule } from './sharedModules/ng-bootstrap.module';
@@ -15,7 +14,7 @@ import { OpdrachtenIngevenModule } from './opdrachten-ingeven/opdrachten-ingeven
 import { RewardsIngevenModule } from './rewards-ingeven/rewards-ingeven.module';
 import { LoginModule } from './login/login.module';
 import { JwtInterceptor } from './services/jwt.interceptor';
-import { RewardsModule } from './rewards/rewards.module';
+import { RewardClaimsModule } from './reward-claims/reward-claims.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { RankingsModule } from './rankings/rankings.module';
 
@@ -43,6 +42,7 @@ export function jwtTokenGetter() {
     LoginModule,
     HttpClientModule,
     RankingsModule,
+      RewardClaimsModule,
 
     JwtModule.forRoot({
       config: {
@@ -56,8 +56,6 @@ export function jwtTokenGetter() {
         ]
       }
     }),
-
-    RewardsModule
   ],
 
   providers: [

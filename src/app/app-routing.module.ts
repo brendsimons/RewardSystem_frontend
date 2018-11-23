@@ -6,14 +6,14 @@ import { OpdrachtenIngevenComponent } from './opdrachten-ingeven/opdrachten-inge
 import { RewardsIngevenComponent } from './rewards-ingeven/rewards-ingeven.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
-import { RewardsComponent } from './rewards/rewards.component';
+import { RewardClaimsComponent } from './reward-claims/reward-claims.component';
 import { RankingsComponent } from './rankings/rankings.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
   { path: 'opdrachtenIngeven', component: OpdrachtenIngevenComponent, canActivate: [AuthGuard] },
-  { path: 'rewards', component: RewardsComponent },
+  { path: 'rewardClaims', component: RewardClaimsComponent },
   { path: 'rewardIngeven', component: RewardsIngevenComponent, canActivate: [AuthGuard] },
   { path: 'rankings', component: RankingsComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },

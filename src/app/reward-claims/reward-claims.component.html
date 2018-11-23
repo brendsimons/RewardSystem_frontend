@@ -3,10 +3,11 @@
         <mat-card-title>Rewards</mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
-        <app-claim-table></app-claim-table>
+        <app-claim-table [hidden]="hidePendingClaims"></app-claim-table>
+        <app-finished-claims-table [hidden]="hideFinishedClaims"></app-finished-claims-table>
     </mat-card-content>
     <mat-card-actions class="text-right">
-        <button mat-button color="primary" type="submit">Afgewerkte aanvragen</button>
+        <button mat-button color="primary" (click)="claimRouteClick()">Afgewerkte aanvragen</button>
         <button mat-raised-button color="primary" (click)="buttonClick()">VOEG NIEUWE REWARD TOE</button>
     </mat-card-actions>
 </mat-card>
