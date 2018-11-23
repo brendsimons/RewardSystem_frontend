@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 import { forEach } from '@angular/router/src/utils/collection';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -28,7 +29,7 @@ export class ShopComponent implements OnInit {
 
   
 
-  constructor(private http: HttpClient, private api: APIService,private auth: AuthService) { }
+  constructor(private http: HttpClient, private api: APIService,private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     // CHECK OP PERMISSION "ADMIN3"
@@ -83,5 +84,9 @@ export class ShopComponent implements OnInit {
   
   aanpassen(rewardId){
 
+  }
+
+  rewardToevoegen(){
+    return this.router.navigate(['/rewardIngeven']);
   }
 }

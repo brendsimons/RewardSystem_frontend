@@ -11,8 +11,11 @@
     </mat-card-content>-->
     
   <mat-card-actions >
-      <button *ngIf="scoreUser >= reward.score" md-button class="button" (click)="claim(reward.id)">Prijs claimen </button>
-      <button md-button class="button" (click)="aanpassen(reward.id)">Aanpassen</button>
+      <button *ngIf="scoreUser >= reward.score" mat-raised-button class="button" (click)="claim(reward.id)">Prijs claimen </button>
+      <button mat-raised-button class="button" (click)="aanpassen(reward.id)">Aanpassen</button>
    </mat-card-actions>
 </mat-card>
+</div>
+<div class="toevoegenKnop">
+    <button mat-raised-button class="button" (click)="rewardToevoegen()">Reward toevoegen</button>
 </div>
