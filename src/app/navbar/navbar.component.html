@@ -11,7 +11,7 @@
       fixedTopGap="56">
       <mat-nav-list>
         <h3 class="titel"><a href="#!">Reward System</a></h3>
-        <ul>
+        <ul *ngIf="auth.loggedIn()">
           <li>
             <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" (click)="snav.toggle()">
               <i class="fas fa-tachometer-alt"></i> Dashboard
@@ -39,13 +39,15 @@
             </a>
           </li>
         </ul>
-        <ul>
+        <ul *ngIf="auth.loggedIn()">
+          <li>
+            <a class="nav-link" (click)="logout(); snav.toggle()"><i class="fas fa-sign-out-alt"></i> Uitloggen</a>
+          </li>
+        </ul>
+        <ul *ngIf="!auth.loggedIn()">
           <li>
             <a class="nav-link" routerLink="/login" routerLinkActive="active" (click)="snav.toggle()">
               <i class="fas fa-sign-in-alt"></i> Inloggen</a>
-          </li>
-          <li>
-            <a class="nav-link" (click)="logout(); snav.toggle()"><i class="fas fa-sign-out-alt"></i> Uitloggen</a>
           </li>
         </ul>
       </mat-nav-list>
