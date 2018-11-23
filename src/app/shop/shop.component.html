@@ -1,17 +1,15 @@
- <div class="titel" *ngFor="let user of users">
- <h5>{{user.credits}} punten</h5>
-</div>
-
-<div class="flex-me" *ngFor="let user of users" >
-<mat-card *ngFor="let reward of rewards" [ngClass]="{true: 'succes', false: 'fail'}[ user.credits > reward.score  ]">
+<div class="flex-me">
+<mat-card *ngFor="let reward of rewards" >
   <mat-card-title>{{reward.name}}</mat-card-title>
   <img mat-card-image src="{{reward.image}}" alt="Foto van {{reward.name}}">  
   <mat-card-subtitle>{{reward.score}} punten</mat-card-subtitle>
 <!--  <mat-card-content>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam accumsan, massa a sodales pharetra, massa odio rhoncus justo, sed rutrum enim leo ut neque. Vivamus arcu dolor, convallis eu libero et, scelerisque consectetur risus. Vestibulum tempor sem eget ullamcorper auctor. Phasellus dignissim sodales tortor. Pellentesque quis libero sed augue tempor fringilla. 
-  </mat-card-content>-->
+  
+    [ngClass]="{true: 'succes', false: 'fail'}[ user.credits > reward.score  ]"
+    </mat-card-content>-->
   <mat-card-actions>
-      <button md-button class="button" (click)="claim()">Prijs claimen</button>
+      <button md-button class="button" (click)="claim(reward.id)">Prijs claimen </button>
    </mat-card-actions>
 </mat-card>
 </div>

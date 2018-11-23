@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
     tasks$: any;
     taskclaims$: any;
     rewardclaims$: any;
+    currentUser: any;
 
     constructor(private http: HttpClient, private api: APIService, private router: Router) { }
 
@@ -45,6 +46,13 @@ export class DashboardComponent implements OnInit {
             .subscribe(
                 data => {
                     this.rewardclaims$ = data;
+                    console.log(data);
+                }
+            );
+        this.http.get(this.api.getUrl('/users/current'))
+            .subscribe(
+                data => {
+                    this.currentUser = data;
                     console.log(data);
                 }
             );

@@ -1,34 +1,59 @@
 <div class="flex-me">
-  <mat-list *ngIf="rewards$?.length > 0">
-    <h3 matLine>Rewards</h3>
-    <mat-list-item *ngFor="let reward of rewards$">
-      <img matListAvatar src="{{reward.image}}" alt="{{reward.name}}"/>
-      <p matLine>{{reward.name}} - {{reward.score}}</p>
-      <mat-divider matLine></mat-divider>
-    </mat-list-item>
-  </mat-list>
-  <mat-list *ngIf="tasks$?.length > 0">
-    <h3 matLine>Taken</h3>
-    <mat-list-item *ngFor="let task of tasks$">
-      <p matLine>{{task.name}} - {{task.score}} punten</p>
-      <mat-divider matLine></mat-divider>
-    </mat-list-item>
-  </mat-list>
-  <mat-list *ngIf="taskclaims$?.length > 0">
-    <h3 matLine>Claims - Taken</h3>
-    <mat-list-item *ngFor="let claim of taskclaims$">
-      <p matLine>{{claim.message}} - {{claim.user.firstName}}</p>
-      <mat-divider matLine></mat-divider>
-    </mat-list-item>
-  </mat-list>
-  <mat-list *ngIf="rewardclaims$?.length > 0">
-    <h3 matLine>Claims - Rewards</h3>
-      <mat-list-item *ngFor="let claim of rewardclaims$">
-        <p matLine *ngIf="claim.status != 'rewarded'">{{claim.user.firstName}} {{claim.user.lastName}}: {{claim.status}}</p>
-        <p matLine *ngIf="claim.reward && claim.status != 'rewarded'">
+  <mat-card *ngIf="currentUser && rewards$?.length > 0">
+    <mat-card-title matLine>Rewards</mat-card-title>
+    <mat-card *ngFor="let reward of rewards$">
+      <mat-card-content>
+        <img mat-card-image src="{{reward.image}}" alt="{{reward.name}}"/>
+        <p>{{reward.name}} - {{reward.score}}</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-card>
+  <ng-container *ngIf="currentUser">
+    <mat-card *ngIf="tasks$?.length > 0">
+      <mat-card-title matLine>Taken</mat-card-title>
+      <mat-card *ngFor="let task of tasks$">
+        <mat-card-content *ngIf="task">
+          <p>{{task.name}} - {{task.score}} punten</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-card>
+  </ng-container>
+  <mat-card *ngIf="currentUser && tasks$?.length > 0">
+    <mat-card-title matLine>Taken</mat-card-title>
+    <mat-card *ngFor="let task of tasks$">
+      <mat-card-content>
+        <p>{{task.name}} - {{task.score}} punten</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-card>
+  <mat-card *ngIf="currentUser && taskclaims$?.length > 0">
+    <mat-card-title matLine>Claims - Taken</mat-card-title>
+    <mat-card *ngFor="let claim of taskclaims$">
+      <mat-card-content *ngIf="currentUser && claim.user.id == currentUser.id">
+        <p>{{claim.message}} - {{claim.user.firstName}}</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-card>
+  <mat-card *ngIf="rewardclaims$?.length > 0">
+    <mat-card-title matLine>Claims - Rewards</mat-card-title>
+      <mat-card *ngFor="let claim of rewardclaims$">
+        <mat-card-content *ngIf="claim.status != 'rewarded' && currentUser && claim.user.id == currentUser.id">
+          <p>{{claim.user.firstName}} {{claim.user.lastName}}: {{claim.status}}</p>
+          <p *ngIf="claim.reward">
+            Reward: {{claim.reward.name}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+  </mat-card>
+  <mat-card *ngIf="rewardclaims$?.length > 0">
+    <mat-card-title matLine>Claims - Rewards</mat-card-title>
+    <mat-card *ngFor="let claim of rewardclaims$">
+      <mat-card-content *ngIf="claim.status != 'rewarded'">
+        <p>{{claim.user.firstName}} {{claim.user.lastName}}: {{claim.status}}</p>
+        <p *ngIf="claim.reward">
           Reward: {{claim.reward.name}}
         </p>
-        <mat-divider matLine  *ngIf="claim.status != 'rewarded'"></mat-divider>
-      </mat-list-item>
-  </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </mat-card>
 </div>
