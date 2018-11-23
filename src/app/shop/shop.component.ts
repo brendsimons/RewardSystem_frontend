@@ -27,6 +27,7 @@ export class ShopComponent implements OnInit {
   public scoreUser;
   
 
+
   
 
   constructor(private http: HttpClient, private api: APIService,private auth: AuthService, private router: Router) { }
@@ -54,6 +55,8 @@ export class ShopComponent implements OnInit {
         data => {this.rewardsclaim = data;
           console.log(this.rewardsclaim);
         });
+
+      
   }
 
   claim(rewardId) {
@@ -83,7 +86,8 @@ export class ShopComponent implements OnInit {
   }
   
   aanpassen(rewardId){
-
+    console.log(rewardId);
+    return this.router.navigate(['/rewardAanpassen/' + rewardId]);
   }
 
   rewardToevoegen(){
