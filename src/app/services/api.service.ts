@@ -11,7 +11,7 @@ export class APIService {
     constructor(private http: HttpClient) { }
 
     public getBaseUrl() {
-        return "https://vpn.brendsimons.be";
+        return "http://localhost:3000";
     }
 
     public getUrl(path) {
