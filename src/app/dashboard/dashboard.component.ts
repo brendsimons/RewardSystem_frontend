@@ -13,8 +13,6 @@ import {Observable} from "rxjs";
     ]
 })
 export class DashboardComponent implements OnInit {
-    rewards$: any;
-    tasks$: any;
     myTaskClaims$: any;
     myRewardClaims$: any;
     currentUser: any;
@@ -22,21 +20,7 @@ export class DashboardComponent implements OnInit {
     constructor(private http: HttpClient, private api: APIService, private router: Router, private auth: AuthService) { }
 
     ngOnInit() {
-        this.http.get(this.api.getUrl('/rewardclaims'))
-            .subscribe(
-                data => {
-                    this.rewards$ = data;
-                    console.log(data);
-                }
-            );
-        this.http.get(this.api.getUrl('/tasks'))
-            .subscribe(
-                data => {
-                    this.tasks$ = data;
-                    console.log(data);
-                }
-            );
-        this.http.get(this.api.getUrl('/taskclaims'))
+        this.http.get(this.api.getUrl('/taskclaims/myown'))
             .subscribe(
                 data => {
                     this.myTaskClaims$ = data;

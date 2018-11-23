@@ -13,23 +13,17 @@
   text-align:center;
 }
 
-.mat-ripple {
-  text-align: center !important;
+.kaart {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-mat-list {
-  border: 1px solid black;
-  margin: 5px;
-  border-radius: 2%;
-}
-
-img {
-  height: 30%;
-  width: 30%;
-}
-
-mat-card {
+mat-card > mat-card {
   margin-bottom: 15px;
   margin-right: 15px;
+  flex-wrap: wrap;
   width: 100%;
+  word-wrap: break-word;
 }
+
