@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../material-module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ShopModule } from './shop/shop.module';
-import { OpdrachtenIngevenModule } from './opdrachten-ingeven/opdrachten-ingeven.module';
+import { TasksModule } from './tasks/tasks.module';
 import { RewardsIngevenModule } from './rewards-ingeven/rewards-ingeven.module';
 import { LoginModule } from './login/login.module';
 import { JwtInterceptor } from './services/jwt.interceptor';
@@ -37,7 +37,7 @@ export function jwtTokenGetter() {
     MaterialModule,
     DashboardModule,
     ShopModule,
-    OpdrachtenIngevenModule,
+    TasksModule,
     RewardsIngevenModule,
     LoginModule,
     HttpClientModule,
