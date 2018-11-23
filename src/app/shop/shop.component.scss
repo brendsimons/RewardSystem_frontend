@@ -8,16 +8,20 @@ mat-card {
     margin:25px;
   }
 .button{
-    background-color: #EE6C4D;
-    color: #293241;
+    background-color: #3f51b5;
+    color: #fff;
     float:right;
     border:#EE6C4D;
     border-radius: 4px;
 }
 
+.buttonAanpassen{
+    float:left;
+}
+
 .button:hover{
-    background-color: #293241;
-    color:  #EE6C4D;
+    background-color: #fff;
+    color:  #3f51b5;
 }
 
 .flex-me {

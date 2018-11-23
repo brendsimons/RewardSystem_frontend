@@ -19,9 +19,12 @@ export class ShopComponent implements OnInit {
   user: any;
   rewardId: any;
   
+  userId: any;
+  rewardsclaim: any;
   public error;
   public scoreReward;
   public scoreUser;
+  
 
   
 
@@ -38,10 +41,18 @@ export class ShopComponent implements OnInit {
       
       });
 
-    this.http.get(this.api.getUrl('/users')).subscribe(
-      data => {console.log(data);
-        this.users = data;
-      });
+      this.http.get(this.api.getUrl("/users/current")).subscribe(
+        data => {this.user = data;
+          console.log(this.user);
+  
+          this.scoreUser = this.user.credits;
+          this.userId = this.user.id
+        });
+
+      this.http.get(this.api.getUrl("/rewardclaims")).subscribe(
+        data => {this.rewardsclaim = data;
+          console.log(this.rewardsclaim);
+        });
   }
 
   claim(rewardId) {
@@ -50,39 +61,27 @@ export class ShopComponent implements OnInit {
         console.log(this.reward);
 
         this.scoreReward = this.reward.score;
+
+        if(this.scoreUser >= this.scoreReward){
+          this.http.put(this.api.getUrl("/users/" + this.userId), {credits: this.scoreUser - this.scoreReward}).subscribe(
+            result => {  
+              this.scoreUser = this.scoreUser - this.scoreReward;
+              console.log("succes", this.scoreUser)
+            },
+            err => this.error = 'Could not authenticate'
+          );
+
+          this.http.post(this.api.getUrl("/rewardclaims"), {reward: rewardId}).subscribe(
+            result => {
+              console.log("succesvol een rewardclaim toegevoegd", rewardId)
+            },
+            err => this.error = 'Could not authenticate'
+          );
+        }
       });
-
-    this.http.get(this.api.getUrl("/users/current")).subscribe(
-      data => {this.user = data;
-        console.log(this.user);
-
-        this.scoreUser = this.user.score;
-        this.user.id
-      });
-
-     this.http.put(this.api.getUrl("/users/" + this.user.id), {scoreUser: this.scoreUser - 1}).subscribe(
-       result => console.log("succes"),
-       err => this.error = 'Could not authenticate'
-     );
-
-
-    // this.http.get(this.api.getUrl("/rewardclaims/{claimId}")).subscribe(
-    //   data => {this.rewardsclaim = data;
-    //     console.log(data);
-
-    //     this.scoreUser = data[1].user.score;
-    //     this.scoreReward = data[1].reward.score;
-
-    //     console.log(this.scoreUser);
-    //     console.log(this.scoreReward);
-
-    //     if(this.scoreUser > this.scoreReward){
-    //       console.log(data[1].user.score - data[1].reward.score);
-    //     }else{
-    //       console.log("ni genoeg punte yo");
-    //     }
-        
-    //   });
   }
+  
+  aanpassen(rewardId){
 
+  }
 }
