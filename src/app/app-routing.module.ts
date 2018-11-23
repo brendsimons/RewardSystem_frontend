@@ -10,15 +10,15 @@ import { RewardsComponent } from './rewards/rewards.component';
 import { RankingsComponent } from './rankings/rankings.component';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
   { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard] },
-  { path: 'rewards', component: RewardsComponent },
+  { path: 'rewards', component: RewardsComponent, canActivate: [AuthGuard] },
   { path: 'rewardIngeven', component: RewardsIngevenComponent, canActivate: [AuthGuard] },
   { path: 'rankings', component: RankingsComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   // Homepage doorverwijzen naar dashboard
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
   // Niet gedefinieerde routes ook doorverwijzen. Zoniet krijg je fouten in de console!
   { path: '**', redirectTo: 'dashboard' },
 ];
