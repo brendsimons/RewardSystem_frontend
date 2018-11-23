@@ -12,7 +12,6 @@ import { RankingsComponent } from './rankings/rankings.component';
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
-  { path: 'opdrachtenIngeven', component: OpdrachtenIngevenComponent, canActivate: [AuthGuard] },
   { path: 'rewardClaims', component: RewardClaimsComponent, canActivate: [AuthGuard] },
   { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard] },
   { path: 'rewardIngeven', component: RewardsIngevenComponent, canActivate: [AuthGuard] },
