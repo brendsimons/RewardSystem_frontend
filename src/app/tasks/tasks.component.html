@@ -10,16 +10,21 @@
           <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
 
-          <!-- Position Column -->
+          <!-- task Column -->
           <ng-container matColumnDef="naam">
             <th mat-header-cell *matHeaderCellDef> Name </th>
             <td mat-cell *matCellDef="let taak"> {{taak.name}} </td>
           </ng-container>
 
-          <!-- Name Column -->
+          <!-- credits Column -->
           <ng-container matColumnDef="credits">
             <th mat-header-cell *matHeaderCellDef> Credits </th>
             <td mat-cell *matCellDef="let taak"> {{taak.score}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="bewerk">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let taak"> <a><i class="fas fa-edit"></i> {{taak.score}} </a> </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -43,7 +48,7 @@
         <input type="number" matInput placeholder="Credits" name="punten" type="text" [(ngModel)]="punten">
       </mat-form-field>
       <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">LOGIN</button>
+        <button mat-raised-button color="primary" type="submit">Voeg toe</button>
       </mat-card-actions>
     </mat-expansion-panel>
 
