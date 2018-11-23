@@ -10,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ClaimTableComponent implements OnInit {
 
+    changedArray = [];
+
     displayedColumns: string[] = ['reward', 'credits', 'userName', 'userCredits', 'status'];
     dataSource = new MatTableDataSource<ClaimElement>();
 
@@ -32,7 +34,9 @@ export class ClaimTableComponent implements OnInit {
                 });
 
                 for (let i = 1; i <= claimArray.length; i++) {
-                    if (claimArray[i - 1].status[0] !== 'rewarded') {
+                    const status = claimArray[i - 1].status[0];
+
+                    if (status !== 'rewarded' && status !== 'not rewarded') {
                         changedArray.push(claimArray[i - 1]);
                     }
                 }
@@ -42,6 +46,56 @@ export class ClaimTableComponent implements OnInit {
             }
         );
     }
+
+/*    showClaims() {
+        this.getClaims('unfinished');
+    }
+
+    showFinishedClaims() {
+        this.getClaims('finished');
+    }
+
+    private getClaims(status) {
+        this.http.get(this.api.getUrl('/rewardclaims')).subscribe(
+            data => {
+                const claimArray = <Array<any>>data;
+
+                claimArray.sort(function (a, b) {
+                    if (a.status > b.status) { return 1; }
+                    if (a.status < b.status) { return -1; }
+                    return 0;
+                });
+
+                this.changedArray = this.filterClaims(claimArray, status);
+
+                this.dataSource = new MatTableDataSource<ClaimElement>(this.changedArray);
+                this.dataSource.paginator = this.paginator;
+            }
+        );
+    }
+
+    private filterClaims(claims, status) {
+
+        const changedClaims = [];
+
+        if (status === 'finished') {
+            for (let i = 1; i <= claims.length; i++) {
+                const claimStatus = claims[i - 1].status[0];
+                if ( claimStatus === 'rewarded' || claimStatus === 'not rewarded') {
+                    changedClaims.push(claims[i - 1]);
+                }
+            }
+        } else {
+            for (let i = 1; i <= claims.length; i++) {
+                const claimStatus = claims[i - 1].status[0];
+                if ( claimStatus === 'rewarded' || claimStatus === 'not rewarded') {
+                    changedClaims.push(claims[i - 1]);
+                }
+            }
+        }
+
+        return changedClaims;
+    }*/
 }
 
 export interface ClaimElement {
