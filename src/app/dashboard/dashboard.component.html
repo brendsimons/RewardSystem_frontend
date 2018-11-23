@@ -1,15 +1,17 @@
 <div class="flex-me">
   <mat-card class="kaart" *ngIf="currentUser && myTaskClaims$?.length > 0" fxLayout="row" fxLayoutWrap>
     <mat-card-title matLine>Mijn taken</mat-card-title>
+    <mat-card-subtitle>Ik heb {{currentUser.score}} punten</mat-card-subtitle>
     <mat-card *ngFor="let claim of myTaskClaims$">
       <mat-card-content *ngIf="currentUser">
-        <p>{{claim.task.name}} - {{claim.message}}</p>
-        <p>{{claim.task.score}} punten</p>
+        <p>{{claim.task.name}} - {{claim.message}} <i class="fas fa-comment"></i></p>
+        <p><i class="fas fa-coins"></i> {{claim.task.score}} punten</p>
       </mat-card-content>
     </mat-card>
   </mat-card>
   <mat-card class="kaart" *ngIf="myRewardClaims$?.length > 0" fxLayout="row" fxLayoutWrap>
     <mat-card-title matLine>Mijn rewards</mat-card-title>
+    <mat-card-subtitle>Ik heb {{currentUser.score}} punten</mat-card-subtitle>
       <mat-card *ngFor="let claim of myRewardClaims$">
         <mat-card-content *ngIf="claim.status != 'rewarded' && currentUser">
           <img mat-card-image src="{{claim.reward.image}}" alt="foto {{claim.reward.name}}"/>
@@ -17,10 +19,11 @@
             <img mat-card-avatar src="{{currentUser.image}}"/>
             {{claim.user.firstName}} {{claim.user.lastName}}: {{claim.status}}</p>
           <p *ngIf="claim.reward">
-            Reward: {{claim.reward.name}}
+            <i class="fas fa-trophy"></i> Reward: {{claim.reward.name}}
           </p>
-          <p>{{claim.reward.score}} punten</p>
+          <p><i class="fas fa-coins"></i> {{claim.reward.score}} punten</p>
         </mat-card-content>
       </mat-card>
   </mat-card>
+  <h4 *ngIf="myTaskClaims$?.length == 0 && myRewardClaims$?.length == 0">Je hebt geen taken of rewards</h4>
 </div>
