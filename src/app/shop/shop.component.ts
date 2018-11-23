@@ -19,9 +19,11 @@ export class ShopComponent implements OnInit {
   user: any;
   rewardId: any;
   
+  userId: any;
   public error;
   public scoreReward;
   public scoreUser;
+  
 
   
 
@@ -38,10 +40,13 @@ export class ShopComponent implements OnInit {
       
       });
 
-    this.http.get(this.api.getUrl('/users')).subscribe(
-      data => {console.log(data);
-        this.users = data;
-      });
+      this.http.get(this.api.getUrl("/users/current")).subscribe(
+        data => {this.user = data;
+          console.log(this.user);
+  
+          this.scoreUser = this.user.credits;
+          this.userId = this.user.id
+        });
   }
 
   claim(rewardId) {
@@ -50,20 +55,22 @@ export class ShopComponent implements OnInit {
         console.log(this.reward);
 
         this.scoreReward = this.reward.score;
+
+        if(this.scoreUser >= this.scoreReward){
+          this.http.put(this.api.getUrl("/users/" + this.userId), {credits: this.scoreUser - 1}).subscribe(
+            result => {  
+              this.scoreUser = this.scoreUser-1;
+              console.log("succes", this.scoreUser)
+            },
+            err => this.error = 'Could not authenticate'
+          );
+        }
+
+        
       });
 
-    this.http.get(this.api.getUrl("/users/current")).subscribe(
-      data => {this.user = data;
-        console.log(this.user);
-
-        this.scoreUser = this.user.score;
-        this.user.id
-      });
-
-     this.http.put(this.api.getUrl("/users/" + userId), {scoreUser: this.scoreUser - 1}).subscribe(
-       result => console.log("succes"),
-       err => this.error = 'Could not authenticate'
-     );
+      
+     
 
 
     // this.http.get(this.api.getUrl("/rewardclaims/{claimId}")).subscribe(
