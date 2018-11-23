@@ -28,7 +28,7 @@ export function jwtTokenGetter() {
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

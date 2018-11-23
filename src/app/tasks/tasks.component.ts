@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APIService } from '../services/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import {first, map} from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
+
 
 @Component({
     selector: 'app-tasks',
@@ -20,7 +22,10 @@ export class TasksComponent implements OnInit {
 
     displayedColumns: string[] = ['naam', 'credits', 'bewerk'];
 
-    constructor(private http: HttpClient, private api: APIService, private auth: AuthService, private router: Router) { }
+    constructor(private http: HttpClient, private api: APIService, private auth: AuthService,
+                private router: Router) { }
+
+
 
     public submit() {
         this.http.post(this.api.getUrl('/tasks'), { name: this.opdracht, score: this.punten })
