@@ -4,12 +4,12 @@
     <mat-card-subtitle>Ik heb {{currentUser.score}} punten</mat-card-subtitle>
     <mat-card *ngFor="let claim of myTaskClaims$">
       <mat-card-content *ngIf="currentUser">
-        <p>{{claim.task.name}} - {{claim.message}} <i class="fas fa-comment"></i></p>
+        <p>{{claim.task.name}} - <i class="fas fa-quote-left"></i> {{claim.message}} <i class="fas fa-quote-right"></i></p>
         <p><i class="fas fa-coins"></i> {{claim.task.score}} punten</p>
       </mat-card-content>
     </mat-card>
   </mat-card>
-  <mat-card class="kaart" *ngIf="myRewardClaims$?.length > 0" fxLayout="row" fxLayoutWrap>
+  <mat-card class="kaart" *ngIf="myRewardClaims$?.length > 0 && currentUser" fxLayout="row" fxLayoutWrap>
     <mat-card-title matLine>Mijn rewards</mat-card-title>
     <mat-card-subtitle>Ik heb {{currentUser.score}} punten</mat-card-subtitle>
       <mat-card *ngFor="let claim of myRewardClaims$">
