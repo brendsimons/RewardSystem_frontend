@@ -1,13 +1,9 @@
 <mat-card class="mat-elevation-z4 reward-card">
     <mat-card-title-group>
-        <mat-card-title [hidden]="hidePendingClaims">Rewards - Lopende aanvragen</mat-card-title>
-        <mat-card-title [hidden]="hideFinishedClaims">Rewards - Afgewerkte aanvragen</mat-card-title>
-        <div *ngFor="let fdc of (claims$ | async)">
-            <mat-card-title>Rewards {{ fdc.user.firstName }}</mat-card-title>
-        </div>
+        <mat-card-title>Rewards - {{ title }}</mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
-        <app-finished-claims-table></app-finished-claims-table>
+        <app-finished-claims-table [claims$]="(claims$ | async)"></app-finished-claims-table>
     </mat-card-content>
     <mat-card-actions class="text-right">
         <button mat-raised-button color="primary" (click)="finishedClaimsButton()" [hidden]="hidePendingClaims">Afgewerkte aanvragen</button>

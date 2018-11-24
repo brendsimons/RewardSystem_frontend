@@ -47,14 +47,14 @@ export class RewardClaimService {
         if (status === 'finished') {
             for (let i = 1; i <= claims.length; i++) {
                 const claimStatus = claims[i - 1].status[0];
-                if ( claimStatus === 'rewarded' || claimStatus === 'not rewarded') {
+                if ( claimStatus === 'Completed' || claimStatus === 'Not Rewarded') {
                     changedClaims.push(claims[i - 1]);
                 }
             }
         } else {
             for (let i = 1; i <= claims.length; i++) {
                 const claimStatus = claims[i - 1].status[0];
-                if ( claimStatus === 'rewarded' || claimStatus === 'not rewarded') {
+                if ( claimStatus !== 'Completed' && claimStatus !== 'Not Rewarded') {
                     changedClaims.push(claims[i - 1]);
                 }
             }
