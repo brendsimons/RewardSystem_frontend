@@ -18,7 +18,7 @@ import { RewardClaimsModule } from './reward-claims/reward-claims.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { RankingsModule } from './rankings/rankings.module';
 import { RewardsAanpassenModule } from './rewards-aanpassen/rewards-aanpassen.module';
-
+import {MatMenuModule} from '@angular/material';
 
 export function jwtTokenGetter() {
   return localStorage.getItem('access_token');
@@ -34,6 +34,7 @@ export function jwtTokenGetter() {
     BrowserModule,
     AppRoutingModule,
     NgBootstrapModule,
+      MatMenuModule,
     BrowserAnimationsModule,
     MaterialModule,
     DashboardModule,

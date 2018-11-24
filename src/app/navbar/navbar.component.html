@@ -5,7 +5,6 @@
     </button>
     <h1 class="app-name">Reward System</h1>
   </mat-toolbar>
-
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
@@ -54,6 +53,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="container-fluid">
+        <button mat-raised-button color="primary" (click)="toggleTheme()">Naar {{theme.toLowerCase()}} thema</button>
         <router-outlet></router-outlet>
       </div>
       <app-footer></app-footer>

@@ -25,6 +25,7 @@ export class ShopComponent implements OnInit {
   public error;
   public scoreReward;
   public scoreUser;
+  public roleUser;
   
 
 
@@ -47,6 +48,8 @@ export class ShopComponent implements OnInit {
         data => {this.user = data;
           console.log(this.user);
   
+          this.roleUser = this.user.role;
+          console.log(this.roleUser);
           this.scoreUser = this.user.credits;
           this.userId = this.user.id
         });
