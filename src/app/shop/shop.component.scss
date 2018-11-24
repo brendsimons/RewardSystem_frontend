@@ -34,11 +34,12 @@ mat-card {
     flex-direction: row;
   }
 
-.succes{
- //   background-color: 
+.puntjes{
+    margin: 25px 25px 0px 25px;
 }
 
-.fail{
-    background-color: lightgray;
-    
+.foto{
+    max-height: 200px;
+    width: auto!important;
+    max-width: calc(100% + 32px);
 }
