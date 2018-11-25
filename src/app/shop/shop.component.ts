@@ -26,7 +26,7 @@ export class ShopComponent implements OnInit {
   public scoreReward;
   public scoreUser;
 
-  constructor(private http: HttpClient, private api: APIService, private auth: AuthService, private router: Router) { }
+  constructor(private http: HttpClient, private api: APIService, public auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.http.get(this.api.getUrl('/rewards')).subscribe(

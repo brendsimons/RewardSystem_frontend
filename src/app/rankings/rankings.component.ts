@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./rankings.component.scss']
 })
 export class RankingsComponent {
-    constructor(private http: HttpClient, private api: APIService, private auth: AuthService, private router: Router) { }
+    constructor(private http: HttpClient, private api: APIService, public auth: AuthService, private router: Router) { }
 
     reset() {
         this.http.get(this.api.getUrl('/users/resetscores')).subscribe(

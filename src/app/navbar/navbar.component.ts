@@ -1,9 +1,9 @@
-import {ChangeDetectorRef, Component, HostBinding, OnInit} from '@angular/core';
+import { ChangeDetectorRef, Component, HostBinding, OnInit } from '@angular/core';
 import { MediaMatcher } from "@angular/cdk/layout";
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import {APIService} from "../services/api.service";
-import {HttpClient} from "@angular/common/http";
+import { APIService } from "../services/api.service";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
     selector: 'app-navbar',
@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
     theme: string = 'Donker';
 
     private _mobileQueryListener: () => void;
-    constructor(private http: HttpClient, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private api: APIService, private auth: AuthService, private router: Router) {
+    constructor(private http: HttpClient, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private api: APIService, public auth: AuthService, private router: Router) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addListener(this._mobileQueryListener);

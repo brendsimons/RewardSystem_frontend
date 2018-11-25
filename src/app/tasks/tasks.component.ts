@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { APIService } from '../services/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import {first, map} from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 
@@ -22,8 +22,8 @@ export class TasksComponent implements OnInit {
 
     displayedColumns: string[] = ['naam', 'credits', 'bewerk', 'check'];
 
-    constructor(private http: HttpClient, private api: APIService, private auth: AuthService,
-                private router: Router) { }
+    constructor(private http: HttpClient, private api: APIService, public auth: AuthService,
+        private router: Router) { }
 
 
 
