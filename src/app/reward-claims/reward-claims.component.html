@@ -1,13 +1,15 @@
 <mat-card class="mat-elevation-z4 reward-card">
     <mat-card-title-group>
-        <mat-card-title>Rewards - {{ title }}</mat-card-title>
+        <mat-card-title>Gekochte producten - {{ title }}</mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
         <app-claim-table [hidden]="hidePendingClaims"></app-claim-table>
         <app-finished-claims-table [hidden]="hideFinishedClaims"></app-finished-claims-table>
     </mat-card-content>
     <mat-card-actions class="text-right">
-        <button mat-raised-button color="primary" (click)="finishedClaimsButton()" [hidden]="hidePendingClaims">Afgewerkte aanvragen</button>
-        <button mat-raised-button color="primary" (click)="claimsButton()" [hidden]="hideFinishedClaims">Lopende aanvragen</button>
+        <button mat-raised-button color="primary" (click)="finishedClaimsButton()" [hidden]="hidePendingClaims">Afgewerkte
+            aanvragen</button>
+        <button mat-raised-button color="primary" (click)="claimsButton()" [hidden]="hideFinishedClaims">Lopende
+            aanvragen</button>
     </mat-card-actions>
 </mat-card>
