@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
-import { APIService } from '../../services/api.service';
-import { HttpClient } from '@angular/common/http';
+import {RewardClaim} from '../../interfaces/reward-claim';
+import {RewardClaimService} from '../../services/reward-claim.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-claim-table',
@@ -10,19 +11,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ClaimTableComponent implements OnInit {
 
-    changedArray = [];
+    showDropdown = false;
 
     displayedColumns: string[] = ['reward', 'credits', 'userName', 'userCredits', 'status'];
-    dataSource = new MatTableDataSource<ClaimElement>();
+    dataSource = new MatTableDataSource<RewardClaim>();
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(private http: HttpClient, private api: APIService) { }
+    constructor(private rewardClaimService: RewardClaimService, private router: Router) {}
 
     ngOnInit() {
         this.dataSource.paginator = this.paginator;
+        this.getClaims();
+    }
 
-        this.http.get(this.api.getUrl('/rewardclaims')).subscribe(
+    getClaims() {
+        this.rewardClaimService.getClaims().subscribe(
             data => {
                 const claimArray = <Array<any>>data;
                 const changedArray = [];
@@ -36,70 +40,18 @@ export class ClaimTableComponent implements OnInit {
                 for (let i = 1; i <= claimArray.length; i++) {
                     const status = claimArray[i - 1].status[0];
 
-                    if (status !== 'rewarded' && status !== 'not rewarded') {
+                    if (status !== 'Completed' && status !== 'Not Rewarded') {
                         changedArray.push(claimArray[i - 1]);
                     }
                 }
 
-                this.dataSource = new MatTableDataSource<ClaimElement>(changedArray);
+                this.dataSource = new MatTableDataSource<RewardClaim>(changedArray);
                 this.dataSource.paginator = this.paginator;
             }
         );
     }
 
-/*    showClaims() {
-        this.getClaims('unfinished');
+    changeClaim(id) {
+        return this.router.navigate(['/rewardClaimWijzigen/' + id]);
     }
-
-    showFinishedClaims() {
-        this.getClaims('finished');
-    }
-
-    private getClaims(status) {
-        this.http.get(this.api.getUrl('/rewardclaims')).subscribe(
-            data => {
-                const claimArray = <Array<any>>data;
-
-                claimArray.sort(function (a, b) {
-                    if (a.status > b.status) { return 1; }
-                    if (a.status < b.status) { return -1; }
-                    return 0;
-                });
-
-                this.changedArray = this.filterClaims(claimArray, status);
-
-                this.dataSource = new MatTableDataSource<ClaimElement>(this.changedArray);
-                this.dataSource.paginator = this.paginator;
-            }
-        );
-    }
-
-    private filterClaims(claims, status) {
-
-        const changedClaims = [];
-
-        if (status === 'finished') {
-            for (let i = 1; i <= claims.length; i++) {
-                const claimStatus = claims[i - 1].status[0];
-                if ( claimStatus === 'rewarded' || claimStatus === 'not rewarded') {
-                    changedClaims.push(claims[i - 1]);
-                }
-            }
-        } else {
-            for (let i = 1; i <= claims.length; i++) {
-                const claimStatus = claims[i - 1].status[0];
-                if ( claimStatus === 'rewarded' || claimStatus === 'not rewarded') {
-                    changedClaims.push(claims[i - 1]);
-                }
-            }
-        }
-
-        return changedClaims;
-    }*/
-}
-
-export interface ClaimElement {
-    user: object;
-    reward: object;
-    status: string;
 }

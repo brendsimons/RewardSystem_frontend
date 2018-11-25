@@ -13,18 +13,37 @@ export class FinishedClaimsTableComponent implements OnInit {
     displayedColumns: string[] = ['reward', 'credits', 'userName', 'userCredits', 'status'];
     dataSource = new MatTableDataSource<RewardClaim>();
 
-    @Input() claims$: any;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(private rewardClaimService: RewardClaimService) {}
 
     ngOnInit() {
-        this.rewardClaimService.getClaims().subscribe( data => {
+        this.dataSource.paginator = this.paginator;
+        this.getClaims();
+    }
 
-            this.claims$ = this.rewardClaimService.filterClaims(this.claims$, status);
+    getClaims() {
+        this.rewardClaimService.getClaims().subscribe(
+            data => {
+                const claimArray = <Array<any>>data;
+                const changedArray = [];
 
-            this.dataSource = new MatTableDataSource<RewardClaim>(this.claims$);
-            this.dataSource.paginator = this.paginator;
-        });
+                claimArray.sort(function (a, b) {
+                    if (a.status > b.status) { return 1; }
+                    if (a.status < b.status) { return -1; }
+                    return 0;
+                });
+
+                for (let i = 1; i <= claimArray.length; i++) {
+                    const status = claimArray[i - 1].status[0];
+                    if ( status === 'Completed' || status === 'Not Rewarded') {
+                        changedArray.push(claimArray[i - 1]);
+                    }
+                }
+
+                this.dataSource = new MatTableDataSource<RewardClaim>(changedArray);
+                this.dataSource.paginator = this.paginator;
+            }
+        );
     }
 }

@@ -1,31 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APIService } from './api.service';
-import { EMPTY, Observable } from 'rxjs';
+import { EMPTY } from 'rxjs';
 import { catchError, share, tap } from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RewardClaimService {
 
-/*    data => {
-    const claimArray = <Array<any>>data;
-
-    claimArray.sort(function (a, b) {
-        if (a.status > b.status) { return 1; }
-        if (a.status < b.status) { return -1; }
-        return 0;
-    });
-
-    this.changedArray = this.filterClaims(claimArray, 'unfinished');
-
-    this.dataSource = new MatTableDataSource<ClaimElement>(this.changedArray);
-    this.dataSource.paginator = this.paginator;
-}
-}*/
-
-  constructor(private http: HttpClient, private api: APIService) { }
+  constructor(private http: HttpClient, private api: APIService, private router: Router) { }
 
   getClaims() {
       return this.http.get(this.api.getUrl('/rewardclaims'))
@@ -40,27 +25,23 @@ export class RewardClaimService {
           );
   }
 
-  filterClaims(claims, status) {
+  updateClaimStatus(claimId, status) {
+      return this.http.put(this.api.getUrl('/rewardclaims/' + claimId), { status: status }).subscribe(
+          result => console.log('succes'),
+          err =>  console.log('Could not authenticate')
+      );
+  }
 
-        const changedClaims = [];
-
-        if (status === 'finished') {
-            for (let i = 1; i <= claims.length; i++) {
-                const claimStatus = claims[i - 1].status[0];
-                if ( claimStatus === 'Completed' || claimStatus === 'Not Rewarded') {
-                    changedClaims.push(claims[i - 1]);
-                }
-            }
-        } else {
-            for (let i = 1; i <= claims.length; i++) {
-                const claimStatus = claims[i - 1].status[0];
-                if ( claimStatus !== 'Completed' && claimStatus !== 'Not Rewarded') {
-                    changedClaims.push(claims[i - 1]);
-                }
-            }
-        }
-
-        return changedClaims;
-    }
-
+  getClaim(id) {
+      return this.http.get(this.api.getUrl('/rewardclaims/' + id))
+          .pipe(
+              tap(req => console.log('get-request', req)),
+              catchError(
+                  (error) => {
+                      console.log(error);
+                      return EMPTY;
+                  }),
+              share()
+          );
+  }
 }

@@ -1,0 +1,25 @@
+<mat-card class="my-card">
+  <form class="my-form" (ngSubmit)="submit()">
+    <mat-card-title>
+      Status aanpassen
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="status" name="status" [(value)]="selectedValue">
+          <mat-option value="Pending">Wachtend</mat-option>
+          <mat-option value="Bought">Aangekocht</mat-option>
+          <mat-option value="Received">Ontvangen</mat-option>
+          <mat-option value="Completed">Afgewerkt</mat-option>
+          <mat-option value="Not Rewarded">Niet toegekend</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="submit()">WIJZIG</button>
+      <button mat-button color="primary" type="button" (click)="backLink()">Terug</button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <p>{{ selectedValue }}</p>
+    </mat-card-footer>
+  </form>
+</mat-card>

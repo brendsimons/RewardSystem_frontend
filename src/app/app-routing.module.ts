@@ -9,6 +9,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { RewardClaimsComponent } from './reward-claims/reward-claims.component';
 import { RankingsComponent } from './rankings/rankings.component';
 import { RewardsAanpassenComponent } from './rewards-aanpassen/rewards-aanpassen.component';
+import {ChangestatusComponent} from './reward-claims/changestatus/changestatus.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'rankings', component: RankingsComponent, canActivate: [AuthGuard] },
   { path: 'rewardAanpassen/:id', component: RewardsAanpassenComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+    { path: 'rewardClaimWijzigen/:id', component: ChangestatusComponent, canActivate: [AuthGuard]},
   // Homepage doorverwijzen naar dashboard
   { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
   // Niet gedefinieerde routes ook doorverwijzen. Zoniet krijg je fouten in de console!
