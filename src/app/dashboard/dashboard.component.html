@@ -1,29 +1,32 @@
 <div class="flex-me">
-  <mat-card class="kaart" *ngIf="currentUser && myTaskClaims$?.length > 0" fxLayout="row" fxLayoutWrap>
-    <mat-card-title matLine>Mijn taken</mat-card-title>
-    <mat-card-subtitle>Ik heb {{currentUser.score}} punten</mat-card-subtitle>
+  <mat-card class="kaart" *ngIf="currentUser" fxLayout="row" fxLayoutWrap>
+    <mat-card-title matLine>Mijn voltooide taken</mat-card-title>
     <mat-card *ngFor="let claim of myTaskClaims$">
       <mat-card-content *ngIf="currentUser">
-        <p>{{claim.task.name}} - <i class="fas fa-quote-left"></i> {{claim.message}} <i class="fas fa-quote-right"></i></p>
+        <p>{{claim.task.name}} - {{claim.status}}</p>
         <p><i class="fas fa-coins"></i> {{claim.task.score}} punten</p>
       </mat-card-content>
     </mat-card>
+    <div *ngIf="myTaskClaims$?.length === 0">
+      Nog geen voltooide taken.
+    </div>
   </mat-card>
-  <mat-card class="kaart" *ngIf="myRewardClaims$?.length > 0 && currentUser" fxLayout="row" fxLayoutWrap>
-    <mat-card-title matLine>Mijn rewards</mat-card-title>
-    <mat-card-subtitle>Ik heb {{currentUser.score}} punten</mat-card-subtitle>
-      <mat-card *ngFor="let claim of myRewardClaims$">
-        <mat-card-content *ngIf="claim.status != 'rewarded' && currentUser">
-          <img mat-card-image src="{{claim.reward.image}}" alt="foto {{claim.reward.name}}"/>
-          <p>
-            <img mat-card-avatar src="{{currentUser.image}}"/>
-            {{claim.user.firstName}} {{claim.user.lastName}}: {{claim.status}}</p>
-          <p *ngIf="claim.reward">
-            <i class="fas fa-trophy"></i> Reward: {{claim.reward.name}}
-          </p>
-          <p><i class="fas fa-coins"></i> {{claim.reward.score}} punten</p>
-        </mat-card-content>
-      </mat-card>
+  <mat-card class="kaart" *ngIf="currentUser" fxLayout="row" fxLayoutWrap>
+    <mat-card-title matLine>Mijn gekochte rewards</mat-card-title>
+    <mat-card *ngFor="let claim of myRewardClaims$">
+      <mat-card-content *ngIf="claim.status != 'rewarded' && currentUser">
+        <img mat-card-image src="{{claim.reward.image}}" alt="foto {{claim.reward.name}}" />
+        <p>
+          <img mat-card-avatar src="{{currentUser.image}}" />
+          {{claim.user.firstName}} {{claim.user.lastName}}: {{claim.status}}</p>
+        <p *ngIf="claim.reward">
+          <i class="fas fa-trophy"></i> Reward: {{claim.reward.name}}
+        </p>
+        <p><i class="fas fa-coins"></i> {{claim.reward.score}} punten</p>
+      </mat-card-content>
+    </mat-card>
+    <div *ngIf="myRewardClaims$?.length === 0">
+      Nog geen gekochte rewards.
+    </div>
   </mat-card>
-  <h4 *ngIf="myTaskClaims$?.length == 0 && myRewardClaims$?.length == 0">Je hebt geen taken of rewards</h4>
 </div>

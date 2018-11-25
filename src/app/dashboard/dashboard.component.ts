@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { APIService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'app-dashboard',
@@ -24,21 +24,18 @@ export class DashboardComponent implements OnInit {
             .subscribe(
                 data => {
                     this.myTaskClaims$ = data;
-                    console.log(data);
                 }
             );
         this.http.get(this.api.getUrl('/rewardclaims/myown'))
             .subscribe(
                 data => {
                     this.myRewardClaims$ = data;
-                    console.log(data);
                 }
             );
         this.http.get(this.api.getUrl('/users/current'))
             .subscribe(
                 data => {
                     this.currentUser = data;
-                    console.log(data);
                 }
             );
     }
