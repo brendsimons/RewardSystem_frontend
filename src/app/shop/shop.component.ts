@@ -19,66 +19,52 @@ export class ShopComponent implements OnInit {
   users: any;
   user: any;
   rewardId: any;
-  
+
   userId: any;
   rewardsclaim: any;
   public error;
   public scoreReward;
   public scoreUser;
-  public roleUser;
-  
 
-
-  
-
-  constructor(private http: HttpClient, private api: APIService,private auth: AuthService, private router: Router) { }
+  constructor(private http: HttpClient, private api: APIService, private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-    // CHECK OP PERMISSION "ADMIN3"
-    console.log(this.auth.hasPermission('ADMIN3'));
-
     this.http.get(this.api.getUrl('/rewards')).subscribe(
-      data => {console.log(data);
+      data => {
         this.rewards = data;
-      //  console.log(data[0].id)
-      
       });
 
-      this.http.get(this.api.getUrl("/users/current")).subscribe(
-        data => {this.user = data;
-          console.log(this.user);
-  
-          this.roleUser = this.user.role;
-          console.log(this.roleUser);
-          this.scoreUser = this.user.credits;
-          this.userId = this.user.id
-        });
+    this.http.get(this.api.getUrl("/users/current")).subscribe(
+      data => {
+        this.user = data;
 
-      this.http.get(this.api.getUrl("/rewardclaims")).subscribe(
-        data => {this.rewardsclaim = data;
-          console.log(this.rewardsclaim);
-        });
+        this.scoreUser = this.user.credits;
+        this.userId = this.user.id
+      });
 
-      
+    this.http.get(this.api.getUrl("/rewardclaims")).subscribe(
+      data => {
+        this.rewardsclaim = data;
+      });
   }
 
   claim(rewardId) {
     this.http.get(this.api.getUrl("/rewards/" + rewardId)).subscribe(
-      data => {this.reward = data;
-        console.log(this.reward);
+      data => {
+        this.reward = data;
 
         this.scoreReward = this.reward.score;
 
-        if(this.scoreUser >= this.scoreReward){
-          this.http.put(this.api.getUrl("/users/" + this.userId), {credits: this.scoreUser - this.scoreReward}).subscribe(
-            result => {  
+        if (this.scoreUser >= this.scoreReward) {
+          this.http.put(this.api.getUrl("/users/" + this.userId), { credits: this.scoreUser - this.scoreReward }).subscribe(
+            result => {
               this.scoreUser = this.scoreUser - this.scoreReward;
               console.log("succes", this.scoreUser)
             },
             err => this.error = 'Could not authenticate'
           );
 
-          this.http.post(this.api.getUrl("/rewardclaims"), {reward: rewardId}).subscribe(
+          this.http.post(this.api.getUrl("/rewardclaims"), { reward: rewardId }).subscribe(
             result => {
               console.log("succesvol een rewardclaim toegevoegd", rewardId)
             },
@@ -87,13 +73,12 @@ export class ShopComponent implements OnInit {
         }
       });
   }
-  
-  aanpassen(rewardId){
-    console.log(rewardId);
+
+  aanpassen(rewardId) {
     return this.router.navigate(['/rewardAanpassen/' + rewardId]);
   }
 
-  rewardToevoegen(){
+  rewardToevoegen() {
     return this.router.navigate(['/rewardIngeven']);
   }
 }

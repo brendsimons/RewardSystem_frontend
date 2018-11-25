@@ -1,15 +1,17 @@
 <h4 class="puntjes">Uw puntensaldo: {{scoreUser}}</h4>
 <div class="flex-me">
-<mat-card *ngFor="let reward of rewards" >
-  <mat-card-title>{{reward.name}}</mat-card-title>
-  <img mat-card-image class="foto" src="{{reward.image}}" alt="Foto van {{reward.name}}">  
-  <mat-card-subtitle>{{reward.score}} punten</mat-card-subtitle>
-  <mat-card-actions >
-      <button *ngIf="scoreUser >= reward.score" mat-raised-button class="button" (click)="claim(reward.id)">Prijs claimen </button>
-      <button mat-raised-button *ngIf="roleUser == 'admin'" class="button" (click)="aanpassen(reward.id)">Aanpassen</button>
-   </mat-card-actions>
-</mat-card>
+    <mat-card *ngFor="let reward of rewards">
+        <mat-card-title>{{reward.name}}</mat-card-title>
+        <img mat-card-image class="foto" src="{{reward.image}}" alt="Foto van {{reward.name}}">
+        <mat-card-subtitle>{{reward.score}} punten</mat-card-subtitle>
+        <mat-card-actions>
+            <button *ngIf="scoreUser >= reward.score" mat-raised-button class="button" (click)="claim(reward.id)">Prijs
+                claimen </button>
+            <button mat-raised-button *ngIf="auth.hasPermission('manage_rewards')" class="button" (click)="aanpassen(reward.id)">Aanpassen</button>
+        </mat-card-actions>
+    </mat-card>
 </div>
 <div class="toevoegenKnop">
-    <button mat-raised-button class="button" *ngIf="roleUser == 'admin'" (click)="rewardToevoegen()">Reward toevoegen</button>
+    <button mat-raised-button class="button" *ngIf="auth.hasPermission('manage_rewards')" (click)="rewardToevoegen()">Reward
+        toevoegen</button>
 </div>
