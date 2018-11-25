@@ -2,8 +2,8 @@
   "name": "reward-system",
   "version": "0.0.0",
   "engines": {
-    "node": "6.11.1",
-    "npm": "3.10.9"
+    "node": "10.13.0",
+    "npm": "6.4.1"
   },
   "scripts": {
     "ng": "ng",
