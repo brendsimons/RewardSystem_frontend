@@ -11,7 +11,7 @@ export class APIService {
     constructor(private http: HttpClient) { }
 
     public getBaseUrl() {
-        return "http://localhost:3000";
+        return "https://rewardsystem-backend.herokuapp.com";
     }
 
     public getUrl(path) {
