@@ -49,11 +49,16 @@
               <i class="fas fa-sign-in-alt"></i> Inloggen</a>
           </li>
         </ul>
+        <ul>
+          <li>
+            <a class="nav-link" routerLinkActive="active" (click)="toggleTheme()">
+              <i class="fas fa-paint-roller"></i> Naar {{theme.toLowerCase()}} thema</a>
+          </li>
+        </ul>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="container-fluid">
-        <button mat-raised-button color="primary" (click)="toggleTheme()">Naar {{theme.toLowerCase()}} thema</button>
         <router-outlet></router-outlet>
       </div>
       <app-footer></app-footer>
