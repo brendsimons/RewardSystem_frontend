@@ -15,12 +15,13 @@ import { map } from 'rxjs/operators';
 export class RewardsIngevenComponent implements OnInit {
     public name;
     public score;
+    public image;
     public error;
 
     constructor(private http: HttpClient, private api: APIService, private router: Router) { }
 
     public submit() {
-        this.http.post(this.api.getUrl('/rewards'), { name: this.name, score: this.score })
+        this.http.post(this.api.getUrl('/rewards'), { name: this.name, score: this.score, image: this.image })
             .subscribe(
                 result => this.router.navigate(['shop']),
                 err => this.error = 'Could not authenticate'

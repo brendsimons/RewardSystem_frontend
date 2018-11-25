@@ -6,15 +6,19 @@
         <mat-card-content>
             <mat-form-field class="full-width">
                 <mat-label>Omschrijving</mat-label>
-                <input  matInput  placeholder="Omschrijving" name="name" [(ngModel)]="name">
+                <input matInput placeholder="Omschrijving" name="name" [(ngModel)]="name">
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-label>Aantal punten</mat-label>
-                <input  matInput="" placeholder="Aantal punten" name="score" [(ngModel)]="score">
+                <input matInput="" placeholder="Aantal punten" name="score" [(ngModel)]="score">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Afbeelding</mat-label>
+                <input matInput="" placeholder="Foto" name="image" [(ngModel)]="image">
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">VOEG TOE</button>
+            <button mat-raised-button color="primary" type="submit">Voeg toe</button>
             <button mat-button color="primary" type="button" (click)="backLink()">Terug</button>
         </mat-card-actions>
         <mat-card-footer></mat-card-footer>
