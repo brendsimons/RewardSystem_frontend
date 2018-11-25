@@ -20,7 +20,7 @@ export class TasksComponent implements OnInit {
     public punten;
     public error;
 
-    displayedColumns: string[] = ['naam', 'credits', 'bewerk'];
+    displayedColumns: string[] = ['naam', 'credits', 'bewerk', 'check'];
 
     constructor(private http: HttpClient, private api: APIService, private auth: AuthService,
                 private router: Router) { }
@@ -37,6 +37,10 @@ export class TasksComponent implements OnInit {
 
     aanpassen(taakId) {
         return this.router.navigate(['/editTasks/' + taakId]);
+    }
+
+    check(taakId) {
+        return this.router.navigate(['/checkTasks/' + taakId]);
     }
     ngOnInit() {
         // CHECK OP PERMISSION "ADMIN3"
