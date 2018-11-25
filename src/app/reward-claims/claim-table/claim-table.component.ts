@@ -13,7 +13,7 @@ export class ClaimTableComponent implements OnInit {
 
     showDropdown = false;
 
-    displayedColumns: string[] = ['reward', 'credits', 'userName', 'userCredits', 'status'];
+    displayedColumns: string[] = ['reward', 'credits', 'userName', 'userCredits', 'status', 'change'];
     dataSource = new MatTableDataSource<RewardClaim>();
 
     @ViewChild(MatPaginator) paginator: MatPaginator;

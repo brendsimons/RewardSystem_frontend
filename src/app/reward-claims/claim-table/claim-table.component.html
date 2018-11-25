@@ -26,9 +26,16 @@
     </ng-container>
 
     <!-- Status Column -->
-    <ng-container matColumnDef="status" >
+    <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef> Status </th>
-      <td mat-cell *matCellDef="let claim"> {{ claim.status }} <button mat-raised-button color="primary" (click)="changeClaim(claim._id)">Wijzig <i class="fas fa-edit"></i></button></td>
+      <td mat-cell *matCellDef="let claim"> {{ claim.status }} </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="change">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let claim"><button mat-raised-button color="primary" (click)="changeClaim(claim._id)"
+          class="tablebutton">Wijzig <i class="fas fa-edit"></i></button></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
