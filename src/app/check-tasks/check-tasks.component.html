@@ -1,0 +1,18 @@
+<mat-card class="my-card">
+    <form class="my-form" (ngSubmit)="submit()">
+        <mat-card-title>
+            Opmerking toevoegen
+        </mat-card-title>
+        <mat-card-content>
+            <mat-form-field class="full-width">
+                <mat-label>Opmerking</mat-label>
+                <input matInput="" placeholder="Opmerking" name="score" [(ngModel)]="message">
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Verzend</button>
+            <button mat-button color="primary" type="button" (click)="backLink()">Terug</button>
+        </mat-card-actions>
+        <mat-card-footer></mat-card-footer>
+    </form>
+</mat-card>

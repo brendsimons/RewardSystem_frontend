@@ -13,6 +13,7 @@ import { RewardsAanpassenComponent } from './rewards-aanpassen/rewards-aanpassen
 import { EditTasksComponent} from './edit-tasks/edit-tasks.component';
 import { RewardChangestatusComponent } from './reward-claims/reward-changestatus/reward-changestatus.component';
 import { TaskChangestatusComponent } from './task-claims/task-changestatus/task-changestatus.component';
+import { CheckTasksComponent} from './check-tasks/check-tasks.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'rankings', component: RankingsComponent, canActivate: [AuthGuard] },
   { path: 'rewardAanpassen/:id', component: RewardsAanpassenComponent, canActivate: [AuthGuard] },
   { path: 'editTasks/:id', component: EditTasksComponent, canActivate: [AuthGuard] },
+  { path: 'checkTasks/:id', component: CheckTasksComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'rewardClaimWijzigen/:id', component: RewardChangestatusComponent, canActivate: [AuthGuard] },
   { path: 'taskClaimWijzigen/:id', component: TaskChangestatusComponent, canActivate: [AuthGuard] },
