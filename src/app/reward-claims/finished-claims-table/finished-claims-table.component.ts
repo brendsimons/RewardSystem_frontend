@@ -36,7 +36,7 @@ export class FinishedClaimsTableComponent implements OnInit {
 
                 for (let i = 1; i <= claimArray.length; i++) {
                     const status = claimArray[i - 1].status[0];
-                    if (status !== 'Afgewerkt' && status !== 'Niet toegekend') {
+                    if (status === 'Afgewerkt' || status === 'Niet toegekend') {
                         changedArray.push(claimArray[i - 1]);
                     }
                 }
