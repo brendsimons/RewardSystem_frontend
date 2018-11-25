@@ -1,12 +1,12 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
-import {RewardClaim} from '../../interfaces/reward-claim';
-import {RewardClaimService} from '../../services/reward-claim.service';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { RewardClaim } from '../../interfaces/reward-claim';
+import { RewardClaimService } from '../../services/reward-claim.service';
 
 @Component({
-  selector: 'app-finished-claims-table',
-  templateUrl: './finished-claims-table.component.html',
-  styleUrls: ['./finished-claims-table.component.scss']
+    selector: 'app-finished-claims-table',
+    templateUrl: './finished-claims-table.component.html',
+    styleUrls: ['./finished-claims-table.component.scss']
 })
 export class FinishedClaimsTableComponent implements OnInit {
 
@@ -15,7 +15,7 @@ export class FinishedClaimsTableComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(private rewardClaimService: RewardClaimService) {}
+    constructor(private rewardClaimService: RewardClaimService) { }
 
     ngOnInit() {
         this.dataSource.paginator = this.paginator;
@@ -36,7 +36,7 @@ export class FinishedClaimsTableComponent implements OnInit {
 
                 for (let i = 1; i <= claimArray.length; i++) {
                     const status = claimArray[i - 1].status[0];
-                    if ( status === 'Completed' || status === 'Not Rewarded') {
+                    if (status !== 'Afgewerkt' && status !== 'Niet toegekend') {
                         changedArray.push(claimArray[i - 1]);
                     }
                 }
