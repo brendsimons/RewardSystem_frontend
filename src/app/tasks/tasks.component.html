@@ -24,7 +24,7 @@
 
           <ng-container matColumnDef="bewerk">
             <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let taak"><a (click)="openDialog()">hallo</a> </td>
+            <td mat-cell *matCellDef="let taak"><button mat-raised-button *ngIf="auth.hasPermission('manage_rewards')" class="button" (click)="aanpassen(taak.id)">Aanpassen</button> </td>
           </ng-container>
 
 

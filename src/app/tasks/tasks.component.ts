@@ -34,6 +34,10 @@ export class TasksComponent implements OnInit {
                 err => this.error = 'Could not authenticate'
             );
     }
+
+    aanpassen(taakId) {
+        return this.router.navigate(['/editTasks/' + taakId]);
+    }
     ngOnInit() {
         // CHECK OP PERMISSION "ADMIN3"
         console.log(this.auth.hasPermission('ADMIN3'));
