@@ -33,8 +33,13 @@
             </a>
           </li>
           <li>
-            <a class="nav-link" routerLink="/rewardClaims" routerLinkActive="active" (click)="snav.toggle()">
-              <i class="fas fa-trophy"></i> Reward claims
+            <a class="nav-link" routerLink="/rewardClaims" routerLinkActive="active" (click)="snav.toggle()" *ngIf="auth.hasPermission('manage_reward_claims')">
+              <i class="fas fa-cart-arrow-down"></i> Gekochte producten
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" routerLink="/taskClaims" routerLinkActive="active" (click)="snav.toggle()" *ngIf="auth.hasPermission('manage_task_claims')">
+              <i class="far fa-calendar-check"></i> Voltooide taken
             </a>
           </li>
         </ul>
