@@ -10,9 +10,10 @@ import { RewardClaimsComponent } from './reward-claims/reward-claims.component';
 import { TaskClaimsComponent } from './task-claims/task-claims.component';
 import { RankingsComponent } from './rankings/rankings.component';
 import { RewardsAanpassenComponent } from './rewards-aanpassen/rewards-aanpassen.component';
+import { EditTasksComponent} from './edit-tasks/edit-tasks.component';
 import { RewardChangestatusComponent } from './reward-claims/reward-changestatus/reward-changestatus.component';
 import { TaskChangestatusComponent } from './task-claims/task-changestatus/task-changestatus.component';
-import {EditTasksComponent} from './edit-tasks/edit-tasks.component';
+
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
