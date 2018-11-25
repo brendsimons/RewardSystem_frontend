@@ -1,0 +1,20 @@
+<mat-card class="my-card">
+  <mat-card-title>
+    Status aanpassen
+  </mat-card-title>
+  <mat-card-content>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="status" name="status" [(value)]="selectedValue">
+        <mat-option value="Wachtend">Wachtend</mat-option>
+        <mat-option value="Aangekocht">Aangekocht</mat-option>
+        <mat-option value="Ontvangen">Ontvangen</mat-option>
+        <mat-option value="Afgewerkt">Afgewerkt</mat-option>
+        <mat-option value="Niet toegekend">Niet toegekend</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="submit()">Wijzig</button>
+    <button mat-button color="primary" type="button" (click)="backLink()">Terug</button>
+  </mat-card-actions>
+</mat-card>

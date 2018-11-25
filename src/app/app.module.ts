@@ -15,10 +15,11 @@ import { RewardsIngevenModule } from './rewards-ingeven/rewards-ingeven.module';
 import { LoginModule } from './login/login.module';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { RewardClaimsModule } from './reward-claims/reward-claims.module';
+import { TaskClaimsModule } from './task-claims/task-claims.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { RankingsModule } from './rankings/rankings.module';
 import { RewardsAanpassenModule } from './rewards-aanpassen/rewards-aanpassen.module';
-import {MatMenuModule} from '@angular/material';
+import { MatMenuModule } from '@angular/material';
 
 export function jwtTokenGetter() {
   return localStorage.getItem('access_token');
@@ -34,7 +35,7 @@ export function jwtTokenGetter() {
     BrowserModule,
     AppRoutingModule,
     NgBootstrapModule,
-      MatMenuModule,
+    MatMenuModule,
     BrowserAnimationsModule,
     MaterialModule,
     DashboardModule,
@@ -44,7 +45,8 @@ export function jwtTokenGetter() {
     LoginModule,
     HttpClientModule,
     RankingsModule,
-      RewardClaimsModule,
+    RewardClaimsModule,
+    TaskClaimsModule,
     RewardsAanpassenModule,
 
     JwtModule.forRoot({
