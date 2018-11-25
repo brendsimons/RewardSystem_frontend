@@ -19,6 +19,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RankingsModule } from './rankings/rankings.module';
 import { RewardsAanpassenModule } from './rewards-aanpassen/rewards-aanpassen.module';
 import {MatMenuModule} from '@angular/material';
+import { EditTasksModule } from './edit-tasks/edit-tasks.module';
 
 export function jwtTokenGetter() {
   return localStorage.getItem('access_token');
@@ -59,6 +60,8 @@ export function jwtTokenGetter() {
         ]
       }
     }),
+
+    EditTasksModule,
   ],
 
   providers: [

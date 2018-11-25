@@ -10,6 +10,7 @@ import { RewardClaimsComponent } from './reward-claims/reward-claims.component';
 import { RankingsComponent } from './rankings/rankings.component';
 import { RewardsAanpassenComponent } from './rewards-aanpassen/rewards-aanpassen.component';
 import {ChangestatusComponent} from './reward-claims/changestatus/changestatus.component';
+import {EditTasksComponent} from './edit-tasks/edit-tasks.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'rewardIngeven', component: RewardsIngevenComponent, canActivate: [AuthGuard] },
   { path: 'rankings', component: RankingsComponent, canActivate: [AuthGuard] },
   { path: 'rewardAanpassen/:id', component: RewardsAanpassenComponent, canActivate: [AuthGuard] },
+  { path: 'editTasks/:id', component: EditTasksComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
     { path: 'rewardClaimWijzigen/:id', component: ChangestatusComponent, canActivate: [AuthGuard]},
   // Homepage doorverwijzen naar dashboard
